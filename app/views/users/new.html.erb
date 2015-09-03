@@ -1,0 +1,12 @@
+<h2>Create new user</h2>
+<%= form_for @user do |f| %>
+    <p><%= f.text_field :name, placeholder: "Name" %></p>
+    <p><%= f.text_field :username, placeholder: "Username" %></p>
+    <p><%= f.password_field :pass %></p>
+    <p><%= f.password_field :pass_confirm %></p>
+    <p><%= f.select :age, (14..99).map {|i| [i] } %></p>
+    <p><%= f.number_field :zipcode, max: 999999, size: 6%></p>
+    <p> <%= f.radio_button :gender, false , :checked => true%>M 
+        <%= f.radio_button :gender, true%>F</p>
+    <p><%= f.submit "Create User" %></p>
+<% end %>

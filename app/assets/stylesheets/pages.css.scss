@@ -10,5 +10,13 @@
 }
 
 .errors {
-    color: red;
+    color: black;
+    padding: 5px;
+    background: rgba(193, 27, 23, 0.6);
+
+    max-width: 17%;
+}
+
+ul {
+    list-style-type: none;
 }

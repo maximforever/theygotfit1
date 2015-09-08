@@ -1,25 +1,26 @@
 <h2>Create new user</h2>
 
 <%= form_for @user do |f| %>
-<div class = "errors">
-    <% if @user.errors.any? %>
 
+<% if @user.errors.any? %>
+    <div class = "errors">
         <ul>
           <% @user.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
           <% end %>
         </ul>
-    <% end %>
-</div>
-
+    </div>
+<% end %>
+<div class = "new-user">
     <p><%= f.text_field :name, placeholder: "Name" %></p>
     <p><%= f.text_field :username, placeholder: "Username" %></p>
     <p><%= f.email_field :email, placeholder: "Email" %></p>
-    <p><%= f.password_field :password %></p>
-    <p><%= f.password_field :password_confirmation %></p>
-    <p><%= f.select :age, (14..99).map {|i| [i] } %></p>
-    <p><%= f.number_field :zipcode, max: 999999, size: 6%></p>
-    <p> <%= f.radio_button :gender, false , :checked => true%>M 
+    <p><%= f.password_field :password, placeholder: "Password" %></p>
+    <p><%= f.password_field :password_confirmation, placeholder: "Confirm Password" %></p>
+    <p>Age: <%= f.select :age, (14..99).map {|i| [i] } %></p>
+    <p>Zipcode: <%= f.number_field :zipcode, max: 999999, size: 6%></p>
+    <p>Gender: <%= f.radio_button :gender, false , :checked => true%>M 
         <%= f.radio_button :gender, true%>F</p>
     <p><%= f.submit "Create User" %></p>
+</div>
 <% end %>

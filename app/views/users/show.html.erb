@@ -1,0 +1,20 @@
+<% u = @user %>
+
+<h2>Profile for <%= u.username %></h2>
+<em><h4><%= u.email %></h4></em>
+
+<p><%= u.name %>  lives in <%= u.zipcode %>.</p>
+
+<p> 
+
+<% if u.gender %>
+    She
+<% else %>
+    He
+ <% end %>  
+
+    is <%= u.age %>.
+
+</p>
+
+

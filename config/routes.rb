@@ -3,8 +3,17 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   get '/users' => 'users#index'
+  get '/user/:id' => 'users#show', as: :user
   get '/users/new' => 'users#new', as: :new_user
   post '/users' => 'users#create'
+
+
+  get '/login' => 'sessions#new', as: :login 
+  post '/login' => 'sessions#create', as: :login_fully
+  get '/logout' => 'sessions#destroy', as: :logout
+
+  get '/special' => 'pages#special'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

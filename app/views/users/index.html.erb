@@ -1,11 +1,12 @@
 <h2>All the users so far: </h2>
 
-<% @users.each do |u| %>
-    <p><%= u.name %>, <%= u.age %> from <%= u.zipcode %>
+<% @users.each do |u| %>    
+    <p>
     <% if u.gender %>
         <%= image_tag("female.png", size: '10') %>
     <% else %>
         <%= image_tag("male.png" ,size: '10') %>
     <% end %>
+    <%= link_to u.name, user_path(u.id) %>, <%= u.age %> from <%= u.zipcode %>.
     </p>
 <% end %>

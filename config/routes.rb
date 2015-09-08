@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   get '/special' => 'pages#special'
 
+  get '/record' => 'records#new', as: :new_record
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,15 +1,16 @@
 <h2>Create new user</h2>
+
 <%= form_for @user do |f| %>
+<div class = "errors">
+    <% if @user.errors.any? %>
 
-<% if @user.errors.any? %>
-    <div class = "errors">
-        <% @user.errors.full_messages.each do |m| %>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
-        <% end %>
-        
-
-    </div>
-<% end %>    
+          <% end %>
+        </ul>
+    <% end %>
+</div>
 
     <p><%= f.text_field :name, placeholder: "Name" %></p>
     <p><%= f.text_field :username, placeholder: "Username" %></p>

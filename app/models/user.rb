@@ -5,8 +5,4 @@ class User < ActiveRecord::Base
    validates :email, uniqueness: true
    validates :username, uniqueness: true
 
-  def a_method_used_for_validation_purposes
-    errors.add(:email, "This username already exists!")
-  end
-
 end

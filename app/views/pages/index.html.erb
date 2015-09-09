@@ -1,2 +1,6 @@
 <p><%= link_to "Sign Up", new_user_path %></p>
 <p><%= link_to "All Users", '/users' %></p>
+
+<% if current_user %>
+    <p><%= link_to "Add record", new_record_path %> </p>
+<% end %>

@@ -17,4 +17,11 @@
 
 </p>
 
+<h4>Records:</h4>
+
+<% u.records.each do |r| %>
+    <%= link_to "Record from #{r.date.strftime("%B %d, %Y")}", record_path(r.id) %>
+</br>
+<% end %>
+
 

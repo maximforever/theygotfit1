@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
    validates :age, presence: true
    validates :zipcode, presence: true
    validates :name, presence: true
+  
 end

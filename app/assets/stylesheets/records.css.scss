@@ -1,0 +1,22 @@
+// Place all the styles related to the Records controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.record-photo-div{
+    max-height: 450px;
+    width: 300px;
+    overflow: hidden;
+}
+.record-photo {
+    max-height: 450px;
+    max-width: 300px
+}
+
+.record-photo-div .caption {
+
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}

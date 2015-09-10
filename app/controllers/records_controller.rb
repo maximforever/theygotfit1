@@ -13,7 +13,7 @@ class RecordsController < ApplicationController
        if @record.save
         redirect_to user_path(session[:user_id])
       else
-        render '/record'
+        render new_record_path
       end
     end
 

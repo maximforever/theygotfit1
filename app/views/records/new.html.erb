@@ -1,13 +1,14 @@
-<h2><%= @user.name %>, let's create new record</h2>
+<h2><%= current_user.name %>, let's create new record</h2>
 
 <%= form_for @record do |r| %>
+
 <% if @record.errors.any? %>
     <div class = "errors">
-        <ul>
-          <% @user.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
+
+          <% @record.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
           <% end %>
-        </ul>
+
     </div>
 <% end %>
     <p><%= r.text_field :photo, placeholder: "Photo URL", size: 50 %></p>

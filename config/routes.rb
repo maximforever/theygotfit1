@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   get '/special' => 'pages#special'
 
-  get '/record' => 'records#new', as: :new_record
+  get '/records/new' => 'records#new', as: :new_record
   post '/records' => 'records#create'
   get '/record/:id' => 'records#show', as: :record
 

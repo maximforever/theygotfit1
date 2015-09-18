@@ -2,5 +2,7 @@
 <p><%= link_to "All Users", '/users' %></p>
 
 <% if current_user %>
-    <p><%= link_to "Add record", new_record_path %> </p>
+    <p><%= link_to "Add record", new_record_path %> <%= link_to "All Records", '/records/all' %> </p>
 <% end %>
+
+<p><%= link_to "Find Record", search_path %></p>

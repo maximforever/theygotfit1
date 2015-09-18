@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get '/records/new' => 'records#new', as: :new_record
   post '/records' => 'records#create'
   get '/record/:id' => 'records#show', as: :record
+  get '/records/all' => 'records#index'
+
+  get '/search' => 'records#search', as: :search
 
 
 

@@ -2,6 +2,10 @@ class RecordsController < ApplicationController
 
     before_action :require_user, only: [:new]
 
+    def index
+      @records = Record.all
+    end
+
     def new
       @user = current_user
       @record = Record.new
@@ -22,6 +26,10 @@ class RecordsController < ApplicationController
       @user = User.find_by_id(@record.user_id)
     end
 
+
+    def search
+      @records = Record.find_weight(params[:weight_now])
+    end
 
     private
 

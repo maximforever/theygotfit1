@@ -1,0 +1,42 @@
+<h3>Find a record</h3>
+
+<%= form_tag(search_path, controller: "records", action: "search", method: 'get')  do %>
+    <p>Weight I am: <%= number_field_tag :weight_now, params[:weight_now] %> </p>
+ 
+    <p><%= submit_tag "Find Record", name: nil %></p>
+<% end %>
+
+
+<% if !@records.nil? %>
+Searching for: <%= params[:weight] %>
+
+
+    <% @records.each do |r| %>
+        <div class = "one-record">
+            <div class = "record-photo-div">
+                <%= image_tag r.photo, class: "record-photo" %>
+                <p class = "caption"><%= r.caption %></p>
+            </div>
+            <p>Height: <%= r.height %>
+                <% if r.inches %>
+                centimeters
+                <% else %>
+                inches
+                <% end %>
+            </p>
+
+            </p>
+            <p>Weight: <%= r.weight %>
+                <% if r.pounds %>
+                kilograms
+                <% else %>
+                pounds
+                <% end %>
+            </p>
+
+            <p>Date: <%= r.date.strftime("%B %d, %Y") %></p>
+        </div>
+    <% end %>
+    <% else %>
+        <p> Nothing found! </p>
+<% end %>

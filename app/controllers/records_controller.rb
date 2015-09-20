@@ -28,7 +28,8 @@ class RecordsController < ApplicationController
 
 
     def search
-      @records = Record.find_weight(params[:weight_now])
+      @records = Record.master(params[:start_weight], params[:end_weight])
+#     @records = Record.find_weight(params[:weight_now])
     end
 
     private

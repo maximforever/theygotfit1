@@ -1,42 +1,50 @@
 <h3>Find a record</h3>
 
 <%= form_tag(search_path, controller: "records", action: "search", method: 'get')  do %>
-    <p>Weight I am: <%= number_field_tag :weight_now, params[:weight_now] %> </p>
+    <p>Weight I am: <%= number_field_tag :start_weight, params[:start_weight] %> </p>
+    <p>Weight I want to be: <%= number_field_tag :end_weight, params[:end_weight] %> </p>
  
     <p><%= submit_tag "Find Record", name: nil %></p>
 <% end %>
 
 
 <% if !@records.nil? %>
-Searching for: <%= params[:weight] %>
-
+    
+    <% if !@records.first.nil? %>
+        <% u = User.find_by_id(@records.first.user_id) %>
+        <p>Found a record from <strong><%= link_to u.username, user_path(u.id) %></strong>:</p>
+    <% end %>
+    
 
     <% @records.each do |r| %>
-        <div class = "one-record">
-            <div class = "record-photo-div">
-                <%= image_tag r.photo, class: "record-photo" %>
-                <p class = "caption"><%= r.caption %></p>
+
+        <% if !r.nil? %>
+            <div class = "one-record">
+                <div class = "record-photo-div">
+                    <%= image_tag r.photo, class: "record-photo" %>
+                    <p class = "caption"><strong><%= u.name %></strong>: <%= r.caption %></p>
+                </div>
+                <p>Height: <%= r.height %>
+                    <% if r.inches %>
+                    centimeters
+                    <% else %>
+                    inches
+                    <% end %>
+                </p>
+
+                </p>
+                <p>Weight: <%= r.weight %>
+                    <% if r.pounds %>
+                    kilograms
+                    <% else %>
+                    pounds
+                    <% end %>
+                </p>
+
+                <p>Date: <%= r.date.strftime("%B %d, %Y") %></p>
             </div>
-            <p>Height: <%= r.height %>
-                <% if r.inches %>
-                centimeters
-                <% else %>
-                inches
-                <% end %>
-            </p>
-
-            </p>
-            <p>Weight: <%= r.weight %>
-                <% if r.pounds %>
-                kilograms
-                <% else %>
-                pounds
-                <% end %>
-            </p>
-
-            <p>Date: <%= r.date.strftime("%B %d, %Y") %></p>
-        </div>
+        <% end %>
     <% end %>
     <% else %>
-        <p> Nothing found! </p>
+        <h4> Nothing found! </h4>
 <% end %>

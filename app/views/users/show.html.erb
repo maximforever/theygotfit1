@@ -17,7 +17,9 @@
 
 </p>
 
-<h4>Records:</h4>
+<% if u.has_records? %>
+  <h4>Records:</h4>
+<% end %>
 
 <% u.records.each do |r| %>
     <%= link_to "Record from #{r.date.strftime("%B %d, %Y")}", record_path(r.id) %>
@@ -26,6 +28,7 @@
 
 <% end %>
 
-<p><%= link_to "Add a new record", new_record_path %></p>
-
+<% if !current_user.nil? && current_user.id == u.id %>
+ <p><%= link_to "Add a new record", new_record_path %></p>
+<% end %>
 

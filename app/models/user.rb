@@ -9,4 +9,14 @@ class User < ActiveRecord::Base
    validates :zipcode, presence: true
    validates :name, presence: true
   
+
+   def has_records?
+    return true if User.find_by_id(id).records.size > 0 
+   end
+
+   def has_weight?(weight)
+
+        # maybe fill out later - handling from user model for now
+   end
+
 end

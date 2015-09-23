@@ -129,7 +129,7 @@ class Record < ActiveRecord::Base
         @@final_set_of_records.push(master_end_record.first)
         puts "weights returned!"
       end
-
+    puts "FINAL WEIGHTS: #{@@final_set_of_records}"
     return @@final_set_of_records
 
   end

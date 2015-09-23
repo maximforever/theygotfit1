@@ -87,12 +87,9 @@ class Record < ActiveRecord::Base
         master_start_record = Record.where(user_id: @@min_user.id, weight: find_closest_w_user(starting, @@min_user))
         master_end_record = Record.where(user_id: @@min_user.id, weight: find_closest_w_user(ending, @@min_user))
 
-
         #we need to check if our final closest records are within 5 lbs of the requirements.
         #if they're not, we need to pass nil measurments.
-
-
-        if ((master_start_record.first.weight.to_i-starting.to_i).abs >5)
+        if ((master_start_record.first.weight.to_i-starting.to_i).abs >5 && !master_start_record.nil?)
           puts "starting is too far off!"
           master_start_record = nil
         end

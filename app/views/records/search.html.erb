@@ -19,30 +19,44 @@
     <% @records.each do |r| %>
 
         <% if !r.nil? %>
-            <div class = "one-record">
-                <div class = "record-photo-div">
-                    <%= image_tag r.photo, class: "record-photo" %>
-                    <p class = "caption"><strong><%= u.name %></strong>: <%= r.caption %></p>
+
+
+
+        <div class = "main">
+            <div class = "container">
+                <div class = "col-md-6">
+                    <div class = "one-record">
+                        <div class = "record-photo-div">
+                            <%= image_tag r.photo, class: "record-photo" %>
+                            <p class = "caption"><strong><%= u.name %></strong>: <%= r.caption %></p>
+                        </div>
+                        <p>Height: <%= r.height %>
+                            <% if r.inches %>
+                            centimeters
+                            <% else %>
+                            inches
+                            <% end %>
+                        </p>
+
+                        </p>
+                        <p>Weight: <%= r.weight %>
+                            <% if r.pounds %>
+                            kilograms
+                            <% else %>
+                            pounds
+                            <% end %>
+                        </p>
+
+                        <p>Date: <%= r.date.strftime("%B %d, %Y") %></p>
+                    </div>
                 </div>
-                <p>Height: <%= r.height %>
-                    <% if r.inches %>
-                    centimeters
-                    <% else %>
-                    inches
-                    <% end %>
-                </p>
 
-                </p>
-                <p>Weight: <%= r.weight %>
-                    <% if r.pounds %>
-                    kilograms
-                    <% else %>
-                    pounds
-                    <% end %>
-                </p>
-
-                <p>Date: <%= r.date.strftime("%B %d, %Y") %></p>
+                <div class = "col-md-6">
+                </div>
             </div>
+        </div>
+
+           
             <% else %>
             <% @none = true %>
         <% end %>

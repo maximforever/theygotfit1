@@ -43,8 +43,13 @@
 
                 <p>Date: <%= r.date.strftime("%B %d, %Y") %></p>
             </div>
+            <% else %>
+            <% @none = true %>
         <% end %>
     <% end %>
-    <% else %>
+
+    <% if @none %>
         <h4> Nothing found! </h4>
+    <% end %>
+
 <% end %>

@@ -27,61 +27,39 @@ class Record < ActiveRecord::Base
     # get all the records +/-5 of starting weight
     start_weight = Record.find_near(starting)
 
-    # if there are none, find closest weight to starting. START = that weight
+    # if there are none, find closest weight to starting.
     if start_weight.size == 0 || start_weight.nil?
-      puts "none found"
-      #if we don't find anything, let's add the closest weight IF it has a close end weight
+      #if we don't find anything, let's add the closest weight
+      puts "none found" 
       start_weight = find_closest(starting)
-      this_user = User.find_by_id(start_weight.user_id) if !this_user.nil?
-
-      if !this_user.nil?
-        if Record.has_weight_near?(ending, this_user)
-          weight_arr.push(start_weight) 
-        else
-          #if there's no good starting weight AND no good ending weight, we push a nil into the array
-          weight_arr.push(nil)
-        end
-      end
+      weight_arr.push(start_weight) 
+      puts "Weight array is now #{weight_arr}"
 
     #if there is only one, that weight is our start_weight  
     elsif start_weight.size == 1
-      puts "found one record, the weight is: #{start_weight.first.weight}"
+      #if we find one campaign, we push that into the array
       start_weight = start_weight.first
-      this_user = User.find_by_id(start_weight.user_id)
-     
-      if Record.has_weight_near?(ending, this_user)
-        weight_arr.push(start_weight) 
-      else
-        #if there's no good ending weight, we push a nil into the array
-        weight_arr.push(nil)
-      end
-
-
-      puts "Weight array is now #{weight_arr}"
+      weight_arr.push(start_weight) 
+#      puts "found one record, the weight is: #{start_weight.first.weight}"
+#      puts "Weight array is now #{weight_arr}"
 
 
     # If there are multiple, we skip ahead, of sorts, and dig into that user
     else
       puts "lots found! Found #{start_weight.size} starting records"      
-      start_weight.each do |record|
-        #for each close starting weight, get the user
-        this_user = User.find_by_id(record.user_id)
-        #if the user has at least 1 record +/- 5 the ending weight, push it into our array
-        if Record.has_weight_near?(ending, this_user)
-          weight_arr.push(record) 
-        else
-          #if there's no good starting weight AND no good ending weight, we push a nil into the array
-          weight_arr.push(nil)
-        end
-
-        puts "Weight array is now #{weight_arr}"     
+      start_weight.each do |record|      
+        weight_arr.push(record) 
       end
+      puts "Weight array is now #{weight_arr}"     
     end
+    # our weight_array contains all user records with a close starting weight: within +/-5
+#    starting_weights = weight_arr.collect {|r| r.weight}
+#    puts "WEIGHT ARRAY BEFORE SENDING OFF: #{weight_arr}"
+#    puts "THE STARTING WEIGHTS ARE: #{starting_weights}"
 
-    puts "WEIGHT ARRAY BEFORE SENDING OFF: #{weight_arr}"
     r = Record.find_best_from_array(weight_arr, starting, ending)
-
     return r
+
   end
 
 
@@ -104,7 +82,7 @@ class Record < ActiveRecord::Base
       end
     end
 
-#      puts "The user with the closest records is #{@@min_user.name} with the weights #{find_closest_w_user(starting, @@min_user)}, #{find_closest_w_user(ending, @@min_user)}" 
+ #     puts "The user with the closest records is #{@@min_user.name} with the weights #{find_closest_w_user(starting, @@min_user)}, #{find_closest_w_user(ending, @@min_user)}" 
       if !@@min_user.nil?
         master_start_record = Record.where(user_id: @@min_user.id, weight: find_closest_w_user(starting, @@min_user))
         master_end_record = Record.where(user_id: @@min_user.id, weight: find_closest_w_user(ending, @@min_user))
@@ -116,17 +94,23 @@ class Record < ActiveRecord::Base
 
         if ((master_start_record.first.weight.to_i-starting.to_i).abs >5)
           puts "starting is too far off!"
-          master_start_record.first = nil
+          master_start_record = nil
         end
         if ((master_end_record.first.weight.to_i-ending.to_i).abs >5)
           puts "ending is too far off!"
-          master_end_record.first = nil 
+          master_end_record = nil 
         end
 
 
-
-        @@final_set_of_records.push(master_start_record.first)
-        @@final_set_of_records.push(master_end_record.first)
+        if (!master_end_record.nil? && !master_start_record.nil?)
+          puts "Pushing weights!"
+          @@final_set_of_records.push(master_start_record.first)
+          @@final_set_of_records.push(master_end_record.first)
+        else
+          puts "Pushing nils!"
+          @@final_set_of_records.push(nil)
+          @@final_set_of_records.push(nil)
+        end
         puts "weights returned!"
       end
     puts "FINAL WEIGHTS: #{@@final_set_of_records}"
@@ -157,8 +141,9 @@ class Record < ActiveRecord::Base
     if (!num.nil?)
       ref = Record.all.collect {|x| x.weight}
       min = ref.min_by { |x| (x.to_f - num.to_f).abs }
-      puts min
-      return min
+      best_record = Record.find_by(weight: min)
+      puts "The closest record is #{best_record}"
+      return best_record
     end
   end
 

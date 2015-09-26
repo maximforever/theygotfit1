@@ -3,31 +3,39 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
-.record-photo-div{
-    max-height: 450px;
-    width: 300px;
-    overflow: hidden;
-}
-.record-photo {
-    max-height: 450px;
-    max-width: 300px
-}
-
-.record-photo-div .caption {
-
+.main .container {
     text-align: center;
-    font-weight: bold;
-    font-size: 14px;
+}
+
+.record-photo {
+    max-width: 70%;
+    max-height: 100%;
+    border: 1px solid black;
+
 }
 
 .one-record {
-    border-bottom: 1px solid black;
-    margin-bottom: 10px
+    text-align: center;
+}
+
+.one-record .caption {
+
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px;
 }
 
 .one-record p {
     padding: 0px;
     margin: 0px;
+    max-height: 450px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.record-info {
+
+    margin-left: auto;
+    margin-right: auto;
 }
 

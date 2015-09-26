@@ -1,3 +1,5 @@
+
+
 <h3>Find a record</h3>
 
 <%= form_tag(search_path, controller: "records", action: "search", method: 'get')  do %>
@@ -8,64 +10,72 @@
 <% end %>
 
 
-<% if !@records.nil? %>
-    
-    <% if !@records.first.nil? %>
-        <% u = User.find_by_id(@records.first.user_id) %>
-        <p>Found a record from <strong><%= link_to u.username, user_path(u.id) %></strong>:</p>
-    <% end %>
+<% if !@records.nil? && @records.size > 0 %>
     
 
-    <% @records.each do |r| %>
-
-        <% if !r.nil? %>
-
-
-
+    <% if !@records.nil? && !@records.first.nil? %>    
         <div class = "main">
             <div class = "container">
-                <div class = "col-md-6">
-                    <div class = "one-record">
-                        <div class = "record-photo-div">
+
+                <% r = @records[0][0].first if !@records[0][0].nil? %>
+                <% u = User.find_by(id: @records[0][0].first.user_id) %>
+                <div class = "row">
+                    <div class = "col-md-6">
+                        <div class = "one-record">
                             <%= image_tag r.photo, class: "record-photo" %>
-                            <p class = "caption"><strong><%= u.name %></strong>: <%= r.caption %></p>
+                            <p class = "caption"><%= u.name %>: <%= r.caption %></p>
+                            <p>Height: <%= r.height %>
+                                <% if r.inches %>
+                                centimeters
+                                <% else %>
+                                inches
+                                <% end %>
+                            </p>
+
+                            <p>Weight: <%= r.weight %>
+                                <% if r.pounds %>
+                                kilograms
+                                <% else %>
+                                pounds
+                                <% end %>
+                            </p>
+                            <p>Date: <%= r.date.strftime("%B %d, %Y") %></p>
                         </div>
-                        <p>Height: <%= r.height %>
-                            <% if r.inches %>
-                            centimeters
-                            <% else %>
-                            inches
-                            <% end %>
-                        </p>
-
-                        </p>
-                        <p>Weight: <%= r.weight %>
-                            <% if r.pounds %>
-                            kilograms
-                            <% else %>
-                            pounds
-                            <% end %>
-                        </p>
-
-                        <p>Date: <%= r.date.strftime("%B %d, %Y") %></p>
                     </div>
+                <% r = @records[0][1].first if !@records[0][1].nil? %>  
+                <% u = User.find_by(id: @records[0][0].first.user_id) %>  
+                    <div class = "col-md-6">
+                        <div class = "one-record">
+                            <%= image_tag r.photo, class: "record-photo" %>
+                            <p class = "caption"><%= u.name %>: <%= r.caption %></p>
+                            <p>Height: <%= r.height %>
+                                <% if r.inches %>
+                                centimeters
+                                <% else %>
+                                inches
+                                <% end %>
+                            </p>
+
+                            <p>Weight: <%= r.weight %>
+                                <% if r.pounds %>
+                                kilograms
+                                <% else %>
+                                pounds
+                                <% end %>
+                            </p>
+                            <p>Date: <%= r.date.strftime("%B %d, %Y") %></p>
+                        </div>
+                    </div>    
                 </div>
 
-                <div class = "col-md-6">
-                </div>
             </div>
         </div>
-
-           
-            <% else %>
-            <% @none = true %>
-        <% end %>
-    <% end %>
-
-    <% if @none %>
+       
+    <% else %>
         <div class = "errors">
             <p> No such record found </p>
         </div>
     <% end %>
+
 
 <% end %>

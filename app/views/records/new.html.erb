@@ -15,8 +15,8 @@
 
     Date taken: <%= date_select(:record, :date, ampm: false) %>
     <p>Weight: <%= r.number_field :weight, min: 50 %>
-        <%= r.radio_button :pounds, false , :checked => true%>pounds
-        <%= r.radio_button :pounds, true%>kilograms</p>
+        <%= r.radio_button :pounds, true , :checked => true%>pounds
+        <%= r.radio_button :pounds, false %>kilograms</p>
     <p>Height: <%= r.number_field :height, min: 13 %>
         <%= r.radio_button :inches, false , :checked => true%>inches
         <%= r.radio_button :inches, true %>centimeters</p>
@@ -27,3 +27,4 @@
     <p><%= r.submit "Save Record" %></p>
 
 <% end %>
+

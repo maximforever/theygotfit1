@@ -9,6 +9,10 @@ class Record < ActiveRecord::Base
   validates :height, presence: true
   validates :weight, presence: true
 
+
+# 1 lb = 453.59 g
+# kg = lb/2.2046
+
 # WORKING SCOPE!
 #  scope :find_weight,  -> (weightin) {where(weight: find_closest(weightin))}
 
@@ -136,6 +140,10 @@ class Record < ActiveRecord::Base
   def self.weights
     weights = Record.all.collect {|r| r.weight}
     weights.sort
+  end
+
+  def to_pounds
+    return (self.weight*2.2046).round
   end
 
 # STILL NEED TO MAJORLY NARROW BY GENDER

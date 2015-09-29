@@ -14,9 +14,4 @@ class User < ActiveRecord::Base
     return true if User.find_by_id(id).records.size > 0 
    end
 
-   def has_weight?(weight)
-
-        # maybe fill out later - handling from user model for now
-   end
-
 end

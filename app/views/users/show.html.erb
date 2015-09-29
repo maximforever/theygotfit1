@@ -21,7 +21,7 @@
   <h4>Records:</h4>
 <% end %>
 
-<% u.records.each do |r| %>
+<% @records.each do |r| %>
 <div class = "col-md-3">
     <%= link_to "Record from #{r.date.strftime("%B %d, %Y")}", record_path(r.id) %>
 </div>

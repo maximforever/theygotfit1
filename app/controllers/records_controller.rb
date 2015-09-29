@@ -28,8 +28,11 @@ class RecordsController < ApplicationController
 
 
     def search
-      @records = Record.master(params[:start_weight], params[:end_weight])
-#     @records = Record.find_weight(params[:weight_now])
+    end
+
+    def find
+#      @records = Record.master(params[:start_weight], params[:end_weight]).page(params[:page])
+      @records = Kaminari.paginate_array(Record.master(params[:start_weight], params[:end_weight])).page(params[:page]).per(1 )
     end
 
     private

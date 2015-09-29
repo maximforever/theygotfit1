@@ -74,14 +74,18 @@ class Record < ActiveRecord::Base
         puts "TESTING REC FOR #{this_user.name}"
         this_difference = (find_closest_w_user(ending, this_user).first.weight.to_f-ending.to_f).abs
         puts this_difference
-        if (this_difference < 5 && !all_users.include?(this_user))
+        if (this_difference <= 5 && !all_users.include?(this_user))
           #if there's a matching set of records, we package these records into an array and push that into our final array.
           one_user = []
-          all_users.push(this_user)
-          one_user.push(find_closest_w_user(starting, this_user))
-          one_user.push(find_closest_w_user(ending, this_user))
-          @@final_set_of_records.push(one_user)
-          puts "SUCCESS! Adding #{this_user.name} to the array!"
+          start_record =  find_closest_w_user(starting, this_user)  
+          end_record   =  find_closest_w_user(ending, this_user)
+          unless (start_record == end_record)
+            all_users.push(this_user)
+            one_user.push(start_record, end_record)
+            one_user.push()
+            @@final_set_of_records.push(one_user)
+            puts "SUCCESS! Adding #{this_user.name} to the array!"
+          end
           puts "The array now includes #{@@final_set_of_records}"
         end
       end

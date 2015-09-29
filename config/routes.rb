@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/records/all' => 'records#index'
 
   get '/search' => 'records#search', as: :search
+  get '/find' => 'records#find'
 
 
 

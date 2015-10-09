@@ -13,7 +13,7 @@ class RecordsController < ApplicationController
 
     def create
        @record = Record.new(record_params)
-       @record.weight = @record.to_pounds if @record.pounds == false
+       @record.weight = @record.to_pounds if @record.pounds == "false"
        @record.user_id = current_user.id
        if @record.save
         redirect_to user_path(session[:user_id])
@@ -33,7 +33,7 @@ class RecordsController < ApplicationController
 
     def find
 #      @records = Record.master(params[:start_weight], params[:end_weight]).page(params[:page])
-      @records = Kaminari.paginate_array(Record.master(params[:start_weight], params[:end_weight])).page(params[:page]).per(1)
+      @records = Kaminari.paginate_array(Record.master(params[:start_weight], params[:end_weight], params[:pounds], params[:gender])).page(params[:page]).per(1)
     end
 
     private

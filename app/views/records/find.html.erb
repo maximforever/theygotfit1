@@ -1,6 +1,9 @@
 <h3>Search results:</h3>
 
-<h4>You searched: <%= params[:start_weight] %> to <%= params[:end_weight] %></h4>
+<h4>You searched: <%= params[:start_weight] %> to <%= params[:end_weight] %> 
+    <% if params[:pounds] == "true" %> pounds
+    <% else %> kilograms.
+    <% end %></h4>
 
 <% if !@records.nil? && @records.size > 0 && @records[0][0].first != @records[0][1].first %>
 
@@ -27,13 +30,7 @@
                             <% end %>
                         </p>
 
-                        <p>Weight: <%= r.weight %>
-                            <% if r.pounds %>
-                            kilograms
-                            <% else %>
-                            pounds
-                            <% end %>
-                        </p>
+                        <p>Weight: <%= r.weight %> pounds / <%= r.to_kg %> kilograms</p>
                         <p>Date: <%= r.date.strftime("%B %d, %Y") %></p>
                     </div>
                 </div>
@@ -50,13 +47,7 @@
                             <% end %>
                         </p>
 
-                        <p>Weight: <%= r.weight %>
-                            <% if r.pounds %>
-                            kilograms
-                            <% else %>
-                            pounds
-                            <% end %>
-                        </p>
+                        <p>Weight: <%= r.weight %> pounds / <%= r.to_kg %> kilograms</p>
                         <p>Date: <%= r.date.strftime("%B %d, %Y") %></p>
                     </div>
                 </div>    

@@ -1,6 +1,7 @@
 class Record < ActiveRecord::Base
   belongs_to :user
 
+
   validates :date,
           date: { before: Proc.new { Time.now }, message: "can't be in the future!"
                   }
@@ -26,9 +27,25 @@ class Record < ActiveRecord::Base
     where(weight: find_closest(weightin))
   end
 
-  def self.master(starting, ending)
+  def self.master(starting, ending, pounds, gender)
     @@final_set_of_records.clear
     weight_arr = []
+    
+    puts "POUNDS IS #{pounds}"
+    puts "GENDER IS #{gender}"
+
+    pounds = false unless (pounds == "true" || pounds == true)
+
+    unless pounds
+      puts "THIS IS IN KILOGRAMS"
+      starting = (starting.to_f*2.2046).to_f.round
+      ending = (ending.to_f*2.2046).to_f.round
+    end
+
+    puts "the starting weight is: #{starting}"
+    puts "the ending weight is: #{ending}"
+
+
     # get all the records +/-5 of starting weight
     start_weight = Record.find_near(starting)
     puts "starting search"
@@ -59,17 +76,28 @@ class Record < ActiveRecord::Base
     end
     # our weight_array contains all user records with a close starting weight: within +/-5
     puts "Weight array is now #{weight_arr}"
-    r = Record.find_best_from_array(weight_arr, starting, ending)
+    r = Record.find_best_from_array(weight_arr, starting, ending, gender)
     return r
 
 
   end
 
 
-  def Record.find_best_from_array(weight_arr, starting, ending)
+  def Record.find_best_from_array(weight_arr, starting, ending, gender)
     @@final_set_of_records.clear
     one_user = []
     all_users = []
+
+    if gender == "male"
+      gender = false 
+    elsif gender == "female"
+      gender = true 
+    else
+      gender == "both"
+    end
+
+    puts "GENDER IS #{gender}"
+
     weight_arr.each do |rec|
       puts "staring tests..."
 
@@ -78,11 +106,22 @@ class Record < ActiveRecord::Base
         puts "TESTING REC FOR #{this_user.name}"
         this_difference = (find_closest_w_user(ending, this_user).first.weight.to_f-ending.to_f).abs
         puts this_difference
+
         if (this_difference <= 5 && !all_users.include?(this_user))
           #if there's a matching set of records, we package these records into an array and push that into our final array.
           one_user = []
           start_record =  find_closest_w_user(starting, this_user)  
           end_record   =  find_closest_w_user(ending, this_user)
+
+
+          unless gender == "both" 
+            if gender != this_user.gender 
+              start_record = end_record
+            end
+          end
+
+
+
           unless (start_record == end_record)
             all_users.push(this_user)
             one_user.push(start_record, end_record)
@@ -92,6 +131,7 @@ class Record < ActiveRecord::Base
           end
           puts "The array now includes #{@@final_set_of_records}"
         end
+
       end
     end
     @@final_set_of_records.uniq!
@@ -122,7 +162,7 @@ class Record < ActiveRecord::Base
       ref = Record.all.collect {|x| x.weight}
       min = ref.min_by { |x| (x.to_f - num.to_f).abs }
       best_record = Record.find_by(weight: min)
-      puts "The closest record is #{best_record}"
+      puts "The closest record is #{best_record} with the weight #{best_record.weight}"
       return best_record
     end
   end
@@ -144,6 +184,10 @@ class Record < ActiveRecord::Base
 
   def to_pounds
     return (self.weight*2.2046).round
+  end
+
+  def to_kg
+    return (self.weight/2.2046).round(1)  
   end
 
 # STILL NEED TO MAJORLY NARROW BY GENDER

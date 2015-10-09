@@ -3,9 +3,16 @@
 <h3>Find a record</h3>
 
 <%= form_tag(find_path, controller: "records", action: "find", method: 'get')  do %>
-    <p>Weight I am: <%= number_field_tag :start_weight, params[:start_weight] %> </p>
+    <p>Weight I am: <%= number_field_tag :start_weight, params[:start_weight] %> 
+        <%= radio_button_tag :pounds, true , :checked => true%>pounds
+        <%= radio_button_tag :pounds, false %>kilograms
+    </p>
     <p>Weight I want to be: <%= number_field_tag :end_weight, params[:end_weight] %> </p>
- 
+    <p> Show me:
+        <%= radio_button_tag :gender, "men", :checked => true%> men
+        <%= radio_button_tag :gender, "women" %> women
+        <%= radio_button_tag :gender, "both" %> both
+    </p>
     <p><%= submit_tag "Find Record", name: nil %></p>
 <% end %>
 

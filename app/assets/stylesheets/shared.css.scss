@@ -1,0 +1,29 @@
+.home {
+    text-align: left;
+}
+
+.header {
+    padding: 8px 20px 8px 20px;
+    font-size: 16px;
+    background: rgba(51, 51, 51, 0.3);
+    color: #C4E0FF;
+}
+
+.header a {
+    color: #187FF2;
+}
+
+.header .log-board {
+    float: right;   
+    text-align: right;
+
+}
+
+.header .log-board p, a {
+    margin: 0px;
+    padding-left: 20px;    
+}
+
+.user-name {
+    padding: 0px;
+}

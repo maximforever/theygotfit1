@@ -1,9 +1,15 @@
-<h2>Log In </h2>
+<div class = "main">
+    <div class = "container thin">
 
-<%= form_for (:session) do |f| %>
+            <%= form_for (:session) do |f| %>
+                <%= label_tag :username, "USERNAME:", class: "login-label" %>
+                <p><%= f.text_field :username %></p>
+                <%= label_tag :username, "PASSWORD:", class: "login-label" %>
+                <p><%= f.password_field :password %></p>
 
-    <p><%= f.text_field :username, placeholder: "Username" %></p>
-    <p><%= f.password_field :password, placeholder: "Password" %></p>
-    <p><%= f.submit "Log In" %></p>
+                <p><%= f.submit "Log In", class: "submit-button" %></p>
 
-<% end %>
+            <% end %>
+  
+    </div>
+</div>

@@ -11,7 +11,29 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap.min
 //= require turbolinks
 //= require_tree .
+
+$(document).on('ready page:load', function () {
+
+    console.log("jQuery is go.");
+
+    $('.weight-options-row input:radio').screwDefaultButtons({
+        image: 'url("/assets/radio-buttons/radioSmall-alt.png")',
+        width: 22,
+        height: 22
+    });
+
+    $('.metric input:radio').screwDefaultButtons({
+        image: 'url("/assets/radio-buttons/radioVerySmall-alt.png")',
+        width: 43,
+        height: 43
+    });
+
+
+});
+
+

@@ -27,14 +27,18 @@ class Record < ActiveRecord::Base
     where(weight: find_closest(weightin))
   end
 
-  def self.master(starting, ending, pounds, gender)
+  def self.master(starting, ending, pounds, gender, height, inches)
     @@final_set_of_records.clear
     weight_arr = []
     
     puts "POUNDS IS #{pounds}"
     puts "GENDER IS #{gender}"
 
+    puts "HEIGHT IS #{height}"
+    puts "INCHES IS #{inches}"
+
     pounds = false unless (pounds == "true" || pounds == true)
+    inches = false unless (inches == "true" || inches == true)
 
     unless pounds
       puts "THIS IS IN KILOGRAMS"
@@ -42,8 +46,14 @@ class Record < ActiveRecord::Base
       ending = (ending.to_f*2.2046).to_f.round
     end
 
+    unless inches
+      puts "THIS IS IN CENTIMETERS"
+      height = (height.to_f*0.393701).to_f.round
+    end
+
     puts "the starting weight is: #{starting}"
     puts "the ending weight is: #{ending}"
+    puts "the height is: #{height}"
 
 
     # get all the records +/-5 of starting weight
@@ -114,13 +124,12 @@ class Record < ActiveRecord::Base
           end_record   =  find_closest_w_user(ending, this_user)
 
 
+          #if gender isn't both, we make the record invalid
           unless gender == "both" 
             if gender != this_user.gender 
               start_record = end_record
             end
           end
-
-
 
           unless (start_record == end_record)
             all_users.push(this_user)
@@ -190,8 +199,6 @@ class Record < ActiveRecord::Base
     return (self.weight/2.2046).round(1)  
   end
 
-# STILL NEED TO MAJORLY NARROW BY GENDER
-# NEED TO FIGURE OUT WHAT TO DO IF MULTIPLE RECORDS OF SAME WEIGHT
 end
 
 

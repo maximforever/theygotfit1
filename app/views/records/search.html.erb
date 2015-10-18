@@ -1,19 +1,57 @@
 
 
-<h3>Find a record</h3>
-
 <%= form_tag(find_path, controller: "records", action: "find", method: 'get')  do %>
-    <p>Weight I am: <%= number_field_tag :start_weight, params[:start_weight] %> 
-        <%= radio_button_tag :pounds, true , :checked => true%>pounds
-        <%= radio_button_tag :pounds, false %>kilograms
-    </p>
-    <p>Weight I want to be: <%= number_field_tag :end_weight, params[:end_weight] %> </p>
-    <p> Show me:
-        <%= radio_button_tag :gender, "men", :checked => true%> men
-        <%= radio_button_tag :gender, "women" %> women
-        <%= radio_button_tag :gender, "both" %> both
-    </p>
-    <p><%= submit_tag "Find Record", name: nil %></p>
+
+
+
+<div class = "main">
+    <div class = "container fat">
+        <div class = "row headings">
+            <div class = "col-md-5 col-md-offset-1"><h2>I weigh:</h2></div>
+            <div class = "col-md-5"><h2>I want to weigh:</h2></div>
+        </div>       
+        <div class = "row  weight-fields-row">
+            <div class = "col-md-5 col-md-offset-1">
+                <%= number_field_tag :start_weight, params[:start_weight] %> 
+            </div>
+
+            <div class = "col-md-5">
+                <%= number_field_tag :end_weight, params[:end_weight] %>
+            </div>
+        </div>
+
+        <div class = "row metric">
+                <%= radio_button_tag :pounds, true , checked: true%><p class = "weight-label"> pounds</p>
+                <%= radio_button_tag :pounds, false %><p class = "weight-label"> kilograms</p>
+        </div>
+
+
+        <div class = "row weight-options-row">
+
+            <div class = "col-md-5 col-md-offset-1">
+                <p class = "little-text">SHOW ME:</p>
+                <%= radio_button_tag :gender, "men" , checked: true %><p class = "weight-label"> men</p>
+                <%= radio_button_tag :gender, "women" %><p class = "weight-label"> women</p>
+                <%= radio_button_tag :gender, "both" %><p class = "weight-label"> both</p>
+            </div>
+
+            <div class = "col-md-5">
+                <p class = "little-text">HEIGHT:</p>
+                <%= number_field_tag :height, params[:height], class: "height-field" %> 
+                <%= radio_button_tag :inches, true, checked: true %><p class = "weight-label"> in</p>
+                <%= radio_button_tag :inches, false %><p class = "weight-label"> cm</p>
+            </div>
+
+        </div>
+
+        <div class = "row submit-row">
+            <p><%= submit_tag "Find Record", name: nil%></p>
+
+        </div>
+    </div>
+</div>
+
+
 <% end %>
 
 

@@ -86,14 +86,14 @@ class Record < ActiveRecord::Base
     end
     # our weight_array contains all user records with a close starting weight: within +/-5
     puts "Weight array is now #{weight_arr}"
-    r = Record.find_best_from_array(weight_arr, starting, ending, gender)
+    r = Record.find_best_from_array(weight_arr, starting, ending, gender, height)
     return r
 
 
   end
 
 
-  def Record.find_best_from_array(weight_arr, starting, ending, gender)
+  def Record.find_best_from_array(weight_arr, starting, ending, gender, height)
     @@final_set_of_records.clear
     one_user = []
     all_users = []
@@ -114,22 +114,28 @@ class Record < ActiveRecord::Base
       if !rec.nil? 
         this_user = User.find_by_id(rec.user_id) 
         puts "TESTING REC FOR #{this_user.name}"
-        this_difference = (find_closest_w_user(ending, this_user).first.weight.to_f-ending.to_f).abs
-        puts this_difference
+        this_weight_difference = (find_closest_w_user(ending, this_user).first.weight.to_f - ending.to_f).abs
+        this_height_difference = (find_closest_w_user(starting, this_user).first.height.to_f - height.to_f).abs
+        puts "weight difference: #{this_weight_difference}"
+        puts "height difference: #{this_height_difference}"
 
-        if (this_difference <= 5 && !all_users.include?(this_user))
+        if (this_weight_difference <= 5 && !all_users.include?(this_user))
           #if there's a matching set of records, we package these records into an array and push that into our final array.
           one_user = []
           start_record =  find_closest_w_user(starting, this_user)  
           end_record   =  find_closest_w_user(ending, this_user)
 
 
-          #if gender isn't both, we make the record invalid
-          unless gender == "both" 
-            if gender != this_user.gender 
+          #if gender isn't both, we make the record invalid IF it's the wrong gender or the height is off by more than 3 inches
+          if gender != "both" || height.nil? || height != ""
+            puts "GENDER: #{gender}"
+            puts "USER GENDER: #{this_user.gender}"
+            if gender != this_user.gender || this_height_difference > 3 
               start_record = end_record
             end
           end
+
+
 
           unless (start_record == end_record)
             all_users.push(this_user)

@@ -30,14 +30,23 @@
        url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
-body {
+
+html, body {
   font-family: 'Hind Vadodara', sans-serif;
   font-weight: 500;
   height: 100%;
   width: 100%;
+  margin: 0px;
+  padding: 0px;  
+  background: none;
+
+/*  overflow: hidden; <-- this fixes the div but presents scrolling */
+overflow-x: hidden;
+
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
 }
-
-
 
 .errors {
     color: black;

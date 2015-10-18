@@ -1,25 +1,51 @@
-<h2>Create new user</h2>
-<h5>Already have an account? <%= link_to "Log in", login_path %> instead!</h5>
+  <style type="text/css">
+    body {
+      background: url(<%= randomized_background_image %>) no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover; */
+    }
+  </style>
 
-<%= form_for @user do |f| %>
+<div class = "main">
+    <div class = "container thin tall">
 
-<% if @user.errors.any? %>
-    <div class = "errors">
-          <% @user.errors.full_messages.each do |msg| %>
-            <p><%= msg %></p>
-          <% end %>
+        <h5>Already have an account? <%= link_to "Log in", login_path %> instead!</h5>
+
+        <%= form_for @user do |f| %>
+            <% if @user.errors.any? %>
+                <div class = "errors">
+                      <% @user.errors.full_messages.each do |msg| %>
+                        <p><%= msg %></p>
+                      <% end %>
+                </div>
+            <% end %>
+            <div class = "new-user">
+                <%= label_tag :name, "NAME:", class: "login-label" %>
+                <p><%= f.text_field :name %></p>
+                <%= label_tag :username, "USERNAME:", class: "login-label" %>
+                <p><%= f.text_field :username %></p>
+                <%= label_tag :email, "EMAIL:", class: "login-label" %>
+                <p><%= f.email_field :email %></p>
+                <%= label_tag :password, "PASSWORD:", class: "login-label" %>
+                <p><%= f.password_field :password%></p>
+                <%= label_tag :password_confirmation, "CONFIRM PASSWORD:", class: "login-label" %>
+                <p><%= f.password_field :password_confirmation%></p>
+                <p>Age: <%= f.select :age, (14..99).map {|i| [i] } %></p>
+                <%= label_tag :zipcode, "ZIPCODE:", class: "login-label" %>
+                <p><%= f.number_field :zipcode, max: 999999, size: 6%></p>
+                <div class = "weight-options-row">
+                    <%= f.radio_button :gender, false, :checked => true%><p class = "weight-label"> MALE</p>
+                    <%= f.radio_button :gender, true%><p class = "weight-label"> FEMALE</p>
+               </div>
+
+
+
+               <p><%= f.submit "Create User" %></p>
+            
+            </div>
+        <% end %>
+
     </div>
-<% end %>
-<div class = "new-user">
-    <p><%= f.text_field :name, placeholder: "Name" %></p>
-    <p><%= f.text_field :username, placeholder: "Username" %></p>
-    <p><%= f.email_field :email, placeholder: "Email" %></p>
-    <p><%= f.password_field :password, placeholder: "Password" %></p>
-    <p><%= f.password_field :password_confirmation, placeholder: "Confirm Password" %></p>
-    <p>Age: <%= f.select :age, (14..99).map {|i| [i] } %></p>
-    <p>Zipcode: <%= f.number_field :zipcode, max: 999999, size: 6%></p>
-    <p>Gender: <%= f.radio_button :gender, false , :checked => true%>M 
-        <%= f.radio_button :gender, true%>F</p>
-    <p><%= f.submit "Create User" %></p>
-</div>
-<% end %>
+</div>    

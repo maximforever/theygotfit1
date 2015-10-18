@@ -1,2 +1,7 @@
 module RecordsHelper
+
+  def randomized_background_image
+    images = ['/assets/search-page/4.jpeg', '/assets/search-page/2.jpeg', '/assets/search-page/3.jpg', '/assets/search-page/4.jpeg', '/assets/search-page/5.jpeg'];
+    images[rand(images.size)]
+  end
 end

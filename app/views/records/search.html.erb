@@ -3,6 +3,16 @@
 <%= form_tag(find_path, controller: "records", action: "find", method: 'get')  do %>
 
 
+<style type="text/css">
+body {
+  background: url(<%= randomized_background_image %>) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+}
+</style>
+
 
 <div class = "main">
     <div class = "container fat">
@@ -36,7 +46,7 @@
             </div>
 
             <div class = "col-md-5">
-                <p class = "little-text">HEIGHT:</p>
+                <p class = "little-text">HEIGHT (optional):</p>
                 <%= number_field_tag :height, params[:height], class: "height-field" %> 
                 <%= radio_button_tag :inches, true, checked: true %><p class = "weight-label"> in</p>
                 <%= radio_button_tag :inches, false %><p class = "weight-label"> cm</p>

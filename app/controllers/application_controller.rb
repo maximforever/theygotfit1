@@ -13,8 +13,8 @@ class ApplicationController < ActionController::Base
     redirect_to login_path unless current_user
   end
 
-
-
-
+  def require_login
+    redirect_to search_path unless current_user
+  end
 
 end

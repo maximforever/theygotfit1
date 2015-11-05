@@ -1,30 +1,72 @@
-<h2><%= current_user.name %>, let's create new record</h2>
+<div class = "main">
+    <div class = "shaded container thin tall">
+        <%= form_for @record do |r| %>
 
-<%= form_for @record do |r| %>
+        <% if @record.errors.any? %>
+            <br>
+            <div class = "errors">
 
-<% if @record.errors.any? %>
-    <div class = "errors">
+                  <% @record.errors.full_messages.each do |msg| %>
+                    <p><%= msg %></p>
+                  <% end %>
 
-          <% @record.errors.full_messages.each do |msg| %>
-            <p><%= msg %></p>
-          <% end %>
+            </div>
+            <br>
+            <br>
+        <% end %>
+            <%= label_tag :name, "IMAGE URL:", class: "login-label" %>
+            <p><%= r.text_field :photo, size: 50 %></p>
+            <%= label_tag :name, "DATE TAKEN:", class: "login-label" %>
+
+
+            <input class = "datepicker" name = "record[date]" id = "record_date" data-value="2012/02/01">
+
+            <br>
+            <br>
+            <%= label_tag :name, "WEIGHT:", class: "login-label" %>
+            <br>
+            <div class = "row newrec-weights-row">
+                <div class = "col-md-8">                    
+                    <p><%= r.number_field :weight, min: 50 %></p>
+                    
+                </div>
+                <div class = "col-md-4">
+                    <div class = "search-metric">
+                        <p class = "weight-label"><%= r.radio_button :pounds, true , :checked => true%>lbs</p>
+                        <br>
+                        <p class = "weight-label"><%= r.radio_button :pounds, false %>kg</p>
+                    </div>
+                </div>
+            </div>    
+            <br>
+
+            <%= label_tag :name, "HEIGHT:", class: "login-label" %>
+            <br>
+            <div class = "row newrec-weights-row">
+                <div class = "col-md-8">                    
+                    <p><%= r.number_field :height, min: 13 %></p>
+                    
+                </div>
+                <div class = "col-md-4">
+                    <div class = "search-metric">
+                        <p class = "weight-label"><%= radio_button_tag :inches, false , :checked => true%>in</p>
+                        <br>
+                        <p class = "weight-label"><%= radio_button_tag :inches, true %>cm</p>
+                    </div>
+                </div>
+            </div>    
+            <br>
+            
+            <%= label_tag :name, "CAPTION (optional):", class: "login-label" %>
+            <p><%= r.text_field :caption, size: 50, maxlength: 144 %></p>
+
+
+            <p><%= r.submit "Save Record", class: "submit-button" %></p>
+
+        <% end %>
 
     </div>
-<% end %>
-    <p><%= r.text_field :photo, placeholder: "Photo URL", size: 50 %></p>
-
-    Date taken: <%= date_select(:record, :date, ampm: false) %>
-    <p>Weight: <%= r.number_field :weight, min: 50 %>
-        <%= r.radio_button :pounds, true , :checked => true%>pounds
-        <%= r.radio_button :pounds, false %>kilograms</p>
-    <p>Height: <%= r.number_field :height, min: 13 %>
-        <%= r.radio_button :inches, false , :checked => true%>inches
-        <%= r.radio_button :inches, true %>centimeters</p>
-
-    <p><%= r.text_field :caption, placeholder: "Photo Caption", size: 50, maxlength: 144 %></p>
+</div>
 
 
-    <p><%= r.submit "Save Record" %></p>
-
-<% end %>
 

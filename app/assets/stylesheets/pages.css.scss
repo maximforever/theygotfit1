@@ -2,4 +2,52 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.index-header{
+    min-height: 20%;
+}
 
+.quote {
+
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;    
+
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 80%;
+    line-height: 1.6;
+
+    p{
+        font-weight: 300;
+        font-style: italic;
+        font-size: 16px;
+    }
+    h4{
+        font-weight: 600;
+    }
+}
+
+.records-section{
+    border-left: 1px solid black;
+    min-height: 100%;
+}
+
+.main-search-buttons {
+    margin-top: 10%;
+    text-align: center;
+}
+
+.main .main-search-buttons a {
+    padding: 25px  35px 25px 35px;
+    margin: 15px;
+    background: #187FF2;
+    font-size: 23px;
+    font-weight: 400;
+    border: none;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    color: black;
+    &:hover {
+        background: #FFBF5D;
+        color: black;
+    }
+}

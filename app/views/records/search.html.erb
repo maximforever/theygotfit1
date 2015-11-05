@@ -14,8 +14,9 @@ body {
 </style>
 
 
-<div class = "main">
-    <div class = "container fat">
+<div class = "main ">
+    
+    <div class = "shaded container fat short">
         <div class = "row headings">
             <div class = "col-md-5 col-md-offset-1"><h2>I weigh:</h2></div>
             <div class = "col-md-5"><h2>I want to weigh:</h2></div>
@@ -40,9 +41,9 @@ body {
 
             <div class = "col-md-5 col-md-offset-1">
                 <p class = "little-text">SHOW ME:</p>
-                <%= radio_button_tag :gender, "men" , checked: true %><p class = "weight-label"> men</p>
-                <%= radio_button_tag :gender, "women" %><p class = "weight-label"> women</p>
-                <%= radio_button_tag :gender, "both" %><p class = "weight-label"> both</p>
+                <%= radio_button_tag :gender, "male" %><p class = "weight-label"> men</p>
+                <%= radio_button_tag :gender, "female" %><p class = "weight-label"> women</p>
+                <%= radio_button_tag :gender, "both" , checked: true %><p class = "weight-label"> both</p>
             </div>
 
             <div class = "col-md-5">
@@ -54,13 +55,12 @@ body {
 
         </div>
 
-        <div class = "row submit-row">
-            <p><%= submit_tag "Find Record", name: nil%></p>
-
+        <div class = "row">
+            <p><%= submit_tag "Find Record", name: nil, class: "submit-button" %></p>
         </div>
+
     </div>
 </div>
-
 
 <% end %>
 

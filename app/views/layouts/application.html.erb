@@ -7,14 +7,8 @@
   <%= stylesheet_link_tag    "user", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <link href='https://fonts.googleapis.com/css?family=Hind+Vadodara:400,600,500' rel='stylesheet' type='text/css'>
-  
-
-
 
   <%= csrf_meta_tags %>
-
-
-
 
 </head>
 <body>
@@ -23,6 +17,7 @@
 
 <%= yield %>
 
+<%= render "/shared/footer" %>
 
 </body>
 </html>

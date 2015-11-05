@@ -10,38 +10,37 @@ input {
 
 input[type="text"], input[type="password"], input[type="email"], input[type="number"] {
     height: 60px;
-    width: 350px;
+    width: 100%;
     font-size: 36px;
     margin-bottom: 10px;
+
+        &.height-field{
+        width: 80px;
+        height: 35px;
+        font-size: 20px;
+        margin-right: 20px;
+    }
 }
+
 
 .login-label {
     float: left;
-    margin-left: 25px;
     margin-top: 5px;
 }
 
 .submit-button {
     padding: 25px  35px 25px 35px ;
     background: #187FF2;
-    color: white;
+
     font-size: 23px;
     font-weight: 400;
     border: none;
     margin-bottom: 20px;
     margin-top: 10px;
     color: black;
+    &:hover {
+        background: #FFBF5D;
+    }
 }
 
-.submit-button:hover {
-    background: #C4E0FF;
-}
 
-.thin {
-    margin-top: 12%;
-    width: 30%;
-}
-
-.tall {
-    margin-top: 5%;
-}

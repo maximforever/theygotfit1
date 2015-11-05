@@ -11,8 +11,10 @@
  * file per style scope.
  *
  *= require bootstrap.min
- *= DO NOT require_tree .
+ *=   require_tree .
  *= require_self
+ *= require pickadate/classic
+ *= require pickadate/classic.date
  */
 
  @import 'pages.css.scss';
@@ -29,7 +31,6 @@
        url('../assets/glyphicons-halflings-regular.ttf') format('truetype'), 
        url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
-
 
 html, body {
   font-family: 'Hind Vadodara', sans-serif;
@@ -65,9 +66,13 @@ overflow-x: hidden;
 }
 
 a {
-    color: #015BC0;
+    padding: 0px;
+    color: #FFBF5D;
     &:hover{
     text-decoration: none;
-    color: #C4E0FF;
+    color: #187FF2;
   }
+    &:active{
+      text-decoration: none;
+    }
 }

@@ -1,8 +1,41 @@
-<p><%= link_to "Sign Up", new_user_path %></p>
-<p><%= link_to "All Users", '/users' %></p>
+<div class = "index-header">
+</div>
 
-<% if current_user %>
-    <p><%= link_to "Add record", new_record_path %> <%= link_to "All Records", '/records/all' %> </p>
-<% end %>
+<div class = "main">
+    <div class = "container">
+        <div class = "row">
+            <div class = "col-md-8">
+                <h2>Hey, <%= current_user.name %>.</h2>
 
-<p><%= link_to "Find Record", search_path %></p>
+                <div class = "quote">
+                    <p>"<%= @quote.quote %>"</p>
+                    <h4><%= @quote.author %></h4>
+                </div>
+                    <div class = "main-search-buttons">
+                        <%= link_to "Find Record", search_path, class: "submit-button" %> 
+                        <%= link_to "Add Record", new_record_path, class: "submit-button" %> 
+                    </div>
+            </div>
+            <div class = "col-md-4 records-section">
+                <h3>Your records:</h3>
+                    <% @records.each do |r| %>
+                        <div class = "col-md-9">
+                            <p><%= link_to "Record from #{r.date.strftime("%B %d, %Y")}", record_path(r.id) %></p>
+                        </div>
+                        <div class = "col-md-3">
+                            <p><%= r.weight %></p>
+                        </div>
+                    <% end %>
+
+                    <% if @records.first.nil? %>
+                        <p class = "new-error"><%= link_to "You should add a record!", new_record_path %></p>
+                    <% end %>
+            </div>
+        </div>    
+    </div>
+</div>    
+
+
+
+
+

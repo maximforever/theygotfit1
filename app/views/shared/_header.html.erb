@@ -1,19 +1,26 @@
-<div class = "row header">
+<div class = "row top-bar">
     <div class = "col-md-4">    
-        <%= link_to "TheyGotFit", '/'%>
+        <%= link_to "TheyGotFit", root_path, class: "logo" %>
     </div>
 
-    <div class = "col-md-8 log-board">   
-        <% if current_user %>
-            <%  u = current_user %>
-            <p>Hello, <%= link_to u.name, user_path(session[:user_id]), class: "user-name" %>. 
-            <%= link_to "Add Record", new_record_path %>
-            <%= link_to "Log Out", logout_path %>
-            </p>
-        <% else %>
-            <p> <%= link_to "Sign Up", new_user_path %>
-                <%= link_to "Log In", login_path %>  
-            </p>
-        <% end %>
+    <div class = "col-md-8 log-board"> 
+        <div class = "col-md-6">
+        </div> 
+        <div class = "col-md-6">
+            <% if current_user %>
+                <p>
+                <%  u = current_user %>
+                <div class = "col-md-4 top-button">Hello, <%= link_to u.name, user_path(session[:user_id]), class: "user-name" %>. </div>
+
+                <div class = "col-md-4 top-button"><%= link_to "Add Record", new_record_path %></div>
+                <div class = "col-md-4 top-button"><%= link_to "Log Out", logout_path %></div>
+                </p>
+            <% else %>
+                <p> <%= link_to "Sign Up", new_user_path %>
+                    <%= link_to "Log In", login_path %>  
+                </p>
+            <% end %>
+        </div> 
+        
     </div>
 </div>

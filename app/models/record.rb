@@ -46,7 +46,9 @@ class Record < ActiveRecord::Base
       ending = (ending.to_f*2.2046).to_f.round
     end
 
-    unless inches
+    height = false if height == "" || height == " " || height == "  " || height.nil?
+
+    if !inches && height #if this is in centimeters AND has height
       puts "THIS IS IN CENTIMETERS"
       height = (height.to_f*0.393701).to_f.round
     end
@@ -107,6 +109,7 @@ class Record < ActiveRecord::Base
     end
 
     puts "GENDER IS #{gender}"
+    puts "HEIGHT IS #{height}"
 
     weight_arr.each do |rec|
       puts "staring tests..."
@@ -115,7 +118,11 @@ class Record < ActiveRecord::Base
         this_user = User.find_by_id(rec.user_id) 
         puts "TESTING REC FOR #{this_user.name}"
         this_weight_difference = (find_closest_w_user(ending, this_user).first.weight.to_f - ending.to_f).abs
-        this_height_difference = (find_closest_w_user(starting, this_user).first.height.to_f - height.to_f).abs
+        
+
+        this_height_difference = (find_closest_w_user(starting, this_user).first.height.to_f - height.to_f).abs if height
+        
+
         puts "weight difference: #{this_weight_difference}"
         puts "height difference: #{this_height_difference}"
 
@@ -127,10 +134,16 @@ class Record < ActiveRecord::Base
 
 
           #if gender isn't both, we make the record invalid IF it's the wrong gender or the height is off by more than 3 inches
-          if gender != "both" || height.nil? || height != ""
+          if gender != "both" 
             puts "GENDER: #{gender}"
             puts "USER GENDER: #{this_user.gender}"
-            if gender != this_user.gender || this_height_difference > 3 
+            if gender != this_user.gender 
+              start_record = end_record
+            end
+          end
+
+          if !this_height_difference.nil?
+            if this_height_difference >3
               start_record = end_record
             end
           end

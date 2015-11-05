@@ -1,4 +1,4 @@
-  <style type="text/css">
+<style type="text/css">
     body {
       background: url(<%= randomized_background_image %>) no-repeat center center fixed; 
       -webkit-background-size: cover;
@@ -6,20 +6,22 @@
       -o-background-size: cover;
       background-size: cover; */
     }
-  </style>
+</style>
 
 <div class = "main">
-    <div class = "container thin tall">
+    <div class = "shaded container thin tall">
 
         <h5>Already have an account? <%= link_to "Log in", login_path %> instead!</h5>
 
         <%= form_for @user do |f| %>
             <% if @user.errors.any? %>
+            <br>
                 <div class = "errors">
                       <% @user.errors.full_messages.each do |msg| %>
                         <p><%= msg %></p>
                       <% end %>
                 </div>
+                <br>
             <% end %>
             <div class = "new-user">
                 <%= label_tag :name, "NAME:", class: "login-label" %>
@@ -32,17 +34,23 @@
                 <p><%= f.password_field :password%></p>
                 <%= label_tag :password_confirmation, "CONFIRM PASSWORD:", class: "login-label" %>
                 <p><%= f.password_field :password_confirmation%></p>
-                <p>Age: <%= f.select :age, (14..99).map {|i| [i] } %></p>
                 <%= label_tag :zipcode, "ZIPCODE:", class: "login-label" %>
                 <p><%= f.number_field :zipcode, max: 999999, size: 6%></p>
-                <div class = "weight-options-row">
-                    <%= f.radio_button :gender, false, :checked => true%><p class = "weight-label"> MALE</p>
-                    <%= f.radio_button :gender, true%><p class = "weight-label"> FEMALE</p>
-               </div>
+
+                <div class = "row gender-age-row">
+                   <div class = "col-md-6">
+                      <p class = "weight-label"><%= f.radio_button :gender, false, :checked => true%> MALE</p>
+                      <br>
+                      <p class = "weight-label"><%= f.radio_button :gender, true%> FEMALE</p>
+                  </div>
+                  <div class = "col-md-6">
+                      <p class = "push-down weight-label">AGE: <span class = "push-right"><%= f.select :age, (14..99).map {|i| [i] }, {}, {class: 'form-control'} %></span></p>
+                  </div>
+                </div>
 
 
 
-               <p><%= f.submit "Create User" %></p>
+               <p><%= f.submit "Create Account",  class: "submit-button" %></p>
             
             </div>
         <% end %>

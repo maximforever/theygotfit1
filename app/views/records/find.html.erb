@@ -10,55 +10,56 @@
     <% u = User.find_by(id: @records[0][0].first.user_id) %>
 
     <h4> Found a record for <%= link_to u.name, user_path(u.id) %>. <%= link_to "Search again?", search_path %> </h4> 
+    <div class = "shaded ">
+        <div class = "main">
+            <div class = "container short">
 
-    <div class = "main">
-        <div class = "container short">
+                <% r = @records[0][0].first unless @records[0][0].nil? %>
+                
+                <div class = "row">
+                    <div class = "col-md-6">
+                        <div class = "one-record">
+                            <%= image_tag r.photo, class: "record-photo" %>
+                            <p class = "caption"><%= u.name %>: <%= r.caption %></p>
+             
+                            <p>Height: <%= r.height %>
+                                <% if r.inches %>
+                                centimeters
+                                <% else %>
+                                inches
+                                <% end %>
+                            </p>
 
-            <% r = @records[0][0].first unless @records[0][0].nil? %>
-            
-            <div class = "row">
-                <div class = "col-md-6">
-                    <div class = "one-record">
-                        <%= image_tag r.photo, class: "record-photo" %>
-                        <p class = "caption"><%= u.name %>: <%= r.caption %></p>
-         
-                        <p>Height: <%= r.height %>
-                            <% if r.inches %>
-                            centimeters
-                            <% else %>
-                            inches
-                            <% end %>
-                        </p>
-
-                        <p>Weight: <%= r.weight %> pounds / <%= r.to_kg %> kilograms</p>
-                        <p>Date: <%= r.date.strftime("%B %d, %Y") %></p>
+                            <p>Weight: <%= r.weight %> pounds / <%= r.to_kg %> kilograms</p>
+                            <p>Date: <%= r.date.strftime("%B %d, %Y") %></p>
+                        </div>
                     </div>
+                <% r = @records[0][1].first unless @records[0][1].nil? %>  
+                    <div class = "col-md-6">
+                        <div class = "one-record">
+                            <%= image_tag r.photo, class: "record-photo" %>
+                            <p class = "caption"><%= u.name %>: <%= r.caption %></p>
+                            <p>Height: <%= r.height %>
+                                <% if r.inches %>
+                                centimeters
+                                <% else %>
+                                inches
+                                <% end %>
+                            </p>
+
+                            <p>Weight: <%= r.weight %> pounds / <%= r.to_kg %> kilograms</p>
+                            <p>Date: <%= r.date.strftime("%B %d, %Y") %></p>
+                        </div>
+                    </div>    
                 </div>
-            <% r = @records[0][1].first unless @records[0][1].nil? %>  
-                <div class = "col-md-6">
-                    <div class = "one-record">
-                        <%= image_tag r.photo, class: "record-photo" %>
-                        <p class = "caption"><%= u.name %>: <%= r.caption %></p>
-                        <p>Height: <%= r.height %>
-                            <% if r.inches %>
-                            centimeters
-                            <% else %>
-                            inches
-                            <% end %>
-                        </p>
-
-                        <p>Weight: <%= r.weight %> pounds / <%= r.to_kg %> kilograms</p>
-                        <p>Date: <%= r.date.strftime("%B %d, %Y") %></p>
-                    </div>
-                </div>    
+                <%= paginate @records %>
             </div>
-            <%= paginate @records %>
         </div>
-    </div>
-<% else %>
-    <div class = "errors">
-        <p> No such record found. <%= link_to "Search again?", search_path %></p>
-    </div>
-<% end %>
+    <% else %>
+        <div class = "errors">
+            <p> No such record found. <%= link_to "Search again?", search_path %></p>
+        </div>
+    </div>    
+<% end %>    
 
 

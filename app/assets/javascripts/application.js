@@ -14,12 +14,27 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap.min
-//= require turbolinks
 //= require_tree .
+//= require turbolinks
+//= require moment
+//= require bootstrap-datetimepicker
+//= require pickadate/picker 
+//= require pickadate/picker.date 
 
-$(document).on('ready page:load', function () {
+
+
+
+var main = function(){
+
+
 
     console.log("jQuery is go.");
+
+    $('.gender-age-row input:radio').screwDefaultButtons({
+        image: 'url("/assets/radio-buttons/radioSmall-alt.png")',
+        width: 22,
+        height: 22
+    });
 
     $('.weight-options-row input:radio').screwDefaultButtons({
         image: 'url("/assets/radio-buttons/radioSmall-alt.png")',
@@ -28,12 +43,25 @@ $(document).on('ready page:load', function () {
     });
 
     $('.metric input:radio').screwDefaultButtons({
-        image: 'url("/assets/radio-buttons/radioVerySmall-alt.png")',
-        width: 43,
-        height: 43
+        image: 'url("/assets/radio-buttons/radioSmall-alt.png")',
+        width: 22,
+        height: 22
     });
 
+    $('.search-metric input:radio').screwDefaultButtons({
+        image: 'url("/assets/radio-buttons/radioSmall-alt.png")',
+        width: 22,
+        height: 22
+    });
 
-});
+    $('.datepicker').pickadate({
+        selectYears: true,
+        selectMonths: true
+    })
+   
+
+};
+
+$(document).ready(main);
 
 

@@ -1,3 +1,13 @@
+<style type="text/css">
+body {
+  background: url(<%= randomized_background_image %>) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+}
+</style>
+
 <div class = "main">
     <div class = "shaded container thin tall">
         <%= form_for @record do |r| %>
@@ -32,9 +42,9 @@
                 </div>
                 <div class = "col-md-4">
                     <div class = "search-metric">
-                        <p class = "weight-label"><%= r.radio_button :pounds, true , :checked => true%>lbs</p>
+                        <p class = "weight-label"><%= r.radio_button :pounds, true , checked: current_user.imperial %>lbs</p>
                         <br>
-                        <p class = "weight-label"><%= r.radio_button :pounds, false %>kg</p>
+                        <p class = "weight-label"><%= r.radio_button :pounds, false, checked: !current_user.imperial %>kg</p>
                     </div>
                 </div>
             </div>    
@@ -49,9 +59,9 @@
                 </div>
                 <div class = "col-md-4">
                     <div class = "search-metric">
-                        <p class = "weight-label"><%= radio_button_tag :inches, false , :checked => true%>in</p>
+                        <p class = "weight-label"><%= radio_button_tag :inches, true %>in</p>
                         <br>
-                        <p class = "weight-label"><%= radio_button_tag :inches, true %>cm</p>
+                        <p class = "weight-label"><%= radio_button_tag :inches, false %>cm</p>
                     </div>
                 </div>
             </div>    

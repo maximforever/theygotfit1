@@ -16,8 +16,6 @@
 //= require bootstrap.min
 //= require_tree .
 //= require turbolinks
-//= require moment
-//= require bootstrap-datetimepicker
 //= require pickadate/picker 
 //= require pickadate/picker.date 
 
@@ -49,6 +47,12 @@ var main = function(){
     });
 
     $('.search-metric input:radio').screwDefaultButtons({
+        image: 'url("/assets/radio-buttons/radioSmall-alt.png")',
+        width: 22,
+        height: 22
+    });
+
+    $('.edit-metric input:radio').screwDefaultButtons({
         image: 'url("/assets/radio-buttons/radioSmall-alt.png")',
         width: 22,
         height: 22

@@ -6,15 +6,32 @@
         <div class = "row">
             <div class = "col-md-8">
                 <h2>Hey, <%= current_user.name %>.</h2>
+                <div class = "records-number">
+                    <p>You've added <%= @records.count %><% if @records.count != 1 %>
+                          records.
+                        <% else %>
+                          record.  
+                    <% end %>
 
+                    <% if @records.count > 0 %>Your last record is from <span class = "date"><%= @records.first.date.strftime("%B %d, %Y") %></span>.<% end %>
+
+                    </p>
+                    <p>You are using TheyGotFit in <span class = "date">
+                    <% if current_user.imperial %>
+                        imperial
+                    <% else %>
+                        metric
+                    <% end %>
+                    </span>units.</p>
+                </div>
                 <div class = "quote">
                     <p>"<%= @quote.quote %>"</p>
                     <h4><%= @quote.author %></h4>
                 </div>
-                    <div class = "main-search-buttons">
-                        <%= link_to "Find Record", search_path, class: "submit-button" %> 
-                        <%= link_to "Add Record", new_record_path, class: "submit-button" %> 
-                    </div>
+                <div class = "main-search-buttons">
+                    <%= link_to "Find Record", search_path, class: "submit-button" %> 
+                    <%= link_to "Add Record", new_record_path, class: "submit-button" %> 
+                </div>
             </div>
             <div class = "col-md-4 records-section">
                 <h3>Your records:</h3>

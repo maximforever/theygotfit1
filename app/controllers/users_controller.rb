@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+before_action :require_user, only: [:edit]
 
   def index
     @users = User.all
@@ -11,6 +12,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.imperial = true
     if @user.save
       session[:user_id] = @user.id
       redirect_to '/users'
@@ -21,13 +23,28 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @records = @user.records.order(:date)
+    @records = @user.records.order(date: :desc)
   end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      redirect_to preferences_path
+    else
+      render 'edit'
+    end
+  end
+
+
 
   private
 
   def user_params
-      params.require(:user).permit(:name, :username, :password, :password_confirmation, :age, :zipcode, :gender, :email)
+      params.require(:user).permit(:name, :username, :password, :password_confirmation, :age, :zipcode, :gender, :email, :imperial)
   end
 
 

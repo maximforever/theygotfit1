@@ -4,23 +4,16 @@
     </div>
 
     <div class = "col-md-8 log-board"> 
-        <div class = "col-md-6">
-        </div> 
-        <div class = "col-md-6">
-            <% if current_user %>
-                <p>
-                <%  u = current_user %>
-                <div class = "col-md-4 top-button">Hello, <%= link_to u.name, user_path(session[:user_id]), class: "user-name" %>. </div>
-
-                <div class = "col-md-4 top-button"><%= link_to "Add Record", new_record_path %></div>
-                <div class = "col-md-4 top-button"><%= link_to "Log Out", logout_path %></div>
-                </p>
-            <% else %>
-                <p> <%= link_to "Sign Up", new_user_path %>
-                    <%= link_to "Log In", login_path %>  
-                </p>
-            <% end %>
-        </div> 
-        
+        <% if current_user %>
+            <%  u = current_user %>
+            
+            <div class = "log-div">Hello, <%= link_to u.name, user_path(session[:user_id]) %>.</div>
+            <div class = "log-div"><%= link_to "Add Record", new_record_path %></div>
+            <div class = "log-div"><%= link_to "Settings", preferences_path(current_user.id) %></div>
+            <div class = "log-div"><%= link_to "Log Out", logout_path %></div>
+        <% else %>
+            <div class = "log-div"><%= link_to "Sign Up", new_user_path %></div>
+            <div class = "log-div"><%= link_to "Log In", login_path %></div>
+        <% end %>
     </div>
 </div>

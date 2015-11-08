@@ -211,12 +211,22 @@ class Record < ActiveRecord::Base
   end
 
   def to_pounds
-    return (self.weight*2.2046).round
+    return (self.weight*2.2046).round(1)
   end
 
   def to_kg
     return (self.weight/2.2046).round(1)  
   end
+
+  def to_inches
+    return (self.height*0.393701).round(1) 
+  end
+
+  def to_cm
+    return (self.height/0.393701).round(1)  
+  end
+
+
 
 end
 

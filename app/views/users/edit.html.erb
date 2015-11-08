@@ -1,0 +1,52 @@
+
+
+
+<div class = "main">
+    <div class = "shaded container thin tall">
+
+        <%= form_for @user do |f| %>
+            <% if @user.errors.any? %>
+                <br>
+                    <div class = "errors">
+                          <% @user.errors.full_messages.each do |msg| %>
+                            <p><%= msg %></p>
+                          <% end %>
+                    </div>
+                    <br>
+                <% end %>
+            <div class = "new-user">
+                
+                
+                <%= label_tag :imperial, "MEASURMENT UNITS:", class: "login-label" %>
+                <br>
+                <div class = "edit-metric">
+                    <p class = "weight-label"><%= f.radio_button :imperial, true, checked: @user.imperial %> IMPERIAL (LBS/IN)</p>
+                    <br>
+                    <p class = "weight-label"><%= f.radio_button :imperial, false, checked: !@user.imperial %> METRIC (KGM/CM)</p> 
+                </div>
+
+
+                <br>
+                <%= label_tag :name, "NAME:", class: "login-label" %>
+                <%= f.text_field :name %>
+                <%= label_tag :zipcode, "ZIPCODE:", class: "login-label" %>
+                <p><%= f.number_field :zipcode, max: 999999, size: 6%></p>
+
+                <div class = "row gender-age-row">
+                   <div class = "col-md-6">
+                      <p class = "weight-label"><%= f.radio_button :gender, false, checked: !@user.gender %> MALE</p>
+                      <br>
+                      <p class = "weight-label"><%= f.radio_button :gender, true, checked: @user.gender %> FEMALE</p>
+                  </div>
+                  <div class = "col-md-6">
+                      <p class = "push-down weight-label">AGE: <span class = "push-right"><%= f.select :age, (14..99).map {|i| [i] }, {}, {class: 'form-control'} %></span></p>
+                  </div>
+                </div>
+
+               <p><%= f.submit "Save Preferences", class: "submit-button" %></p>
+            
+            </div>
+        <% end %>
+
+    </div>
+</div>   

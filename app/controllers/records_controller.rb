@@ -12,10 +12,20 @@ class RecordsController < ApplicationController
     end
 
     def create
-       @record = Record.new(record_params)
-       @record.weight = @record.to_pounds if @record.pounds == "false"
-       @record.user_id = current_user.id
-       if @record.save
+      @record = Record.new(record_params)
+      
+      if @record.pounds == "false" || !@record.pounds
+        @record.weight = @record.to_pounds
+        @record.pounds = true
+      end
+
+      if @record.inches == "false" || !@record.inches
+        @record.height = @record.to_inches
+        @record.inches = true
+      end
+
+      @record.user_id = current_user.id
+      if @record.save
         redirect_to user_path(session[:user_id])
       else
         render new_record_path

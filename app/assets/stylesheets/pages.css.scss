@@ -6,6 +6,10 @@
     min-height: 20%;
 }
 
+.display-record-header{
+    min-height: 10%;
+}
+
 .quote {
 
     font-family: 'Open Sans', sans-serif;
@@ -29,6 +33,9 @@
 .records-section{
     border-left: 1px solid black;
     min-height: 100%;
+    &.large {
+        font-size: 22px;
+    }
 }
 
 .main-search-buttons {
@@ -51,3 +58,11 @@
         color: black;
     }
 }
+
+.records-number {
+    font-size: 16px;
+    .date {
+    color: #187FF2;
+    }
+}
+

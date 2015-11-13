@@ -1,5 +1,8 @@
 <% r = @record %>
-<% imp = current_user.imperial %>
+<% u = User.find_by_id(r.user_id) %>
+<% imp = current_user.imperial if current_user  %>
+<% imp = true if !current_user  %>
+
 <div class = "display-record-header">
 </div>
 <div class = "main">
@@ -14,16 +17,18 @@
             <p class = "caption"><%= r.caption %></p>
         </div>
         <div class = "col-md-4 records-section large">
-
-            <% #this is horrible %>
+            <h3>Record for <%= link_to u.name, user_path(u.id) %></h3>
+            <h5>Record from <span class = "date"><%= r.date.strftime("%B %d, %Y") %></span></h5>
+            <% #this is horrible - this IS AN AWFUL FIX %>
             <% if !imp %>
                 <p>Weight: <%=  r.to_kg %> kilograms</p>
-                <p>Height: <%=  r.to_cm %> centimeters</p>
+                <p>Height: <%=  ((r.to_cm).floor + 1) %> centimeters</p>
             <% else %>
                 <p>Weight: <%=  r.weight %> pounds</p>
                 <p>Height: <%=  r.height %> inches</p>
 
             <% end %>  
+            
             
         </div>
     </div>

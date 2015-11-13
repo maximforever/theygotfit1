@@ -40,3 +40,22 @@
 
 }
 
+.pref-open-pane{
+    cursor: pointer;
+}
+
+.pref-pane {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    background: white;
+    border: 1px solid black;
+    z-index: 5;
+    height: 40%;
+    width: 20%;
+}
+
+.hidden{
+    display: none;
+}
+

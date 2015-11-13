@@ -10,6 +10,8 @@ class SessionsController < ApplicationController
       redirect_to root_path
       
     else
+      
+      flash.now.alert = "Invalid username or password."
       redirect_to login_path
     end
   end

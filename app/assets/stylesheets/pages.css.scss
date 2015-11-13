@@ -61,8 +61,14 @@
 
 .records-number {
     font-size: 16px;
-    .date {
-    color: #187FF2;
-    }
 }
 
+.date {
+color: #187FF2;
+}
+
+
+.delete-rec{
+    opacity: 0;
+    color: red;
+}

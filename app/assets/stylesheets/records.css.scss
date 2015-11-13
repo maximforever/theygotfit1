@@ -26,22 +26,24 @@ input[type=number]::-webkit-outer-spin-button {
     margin-top: 5%;
 }
 
+.fat {
+    width: 75%;
+}
+
 .thin {
     width: 30%;
 }
 
-.tall {
-    margin-top: 5%;
-}
 
 .record-photo {
-    max-width: 80%;
-    border: 1px solid black;
+    max-width: 95%;
+    border:15px solid rgba(51, 51, 51, 0.8); 
 
 }
 
 .one-record {
     text-align: center;
+
 }
 
 .one-record .caption {
@@ -98,11 +100,12 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0px;
     background-position: 0px 0px;
     display: inline-block;
+    margin-right: 5px;
 }
 
 .weight-label {
     font-size: 20px;
-    display: inline;
+    display: inline-block;
     margin-right: 20px;
 
 }
@@ -151,13 +154,10 @@ input {
 }
 
 .form-control {
-    width: 35%;
+    width: 50%;
     display: inline;
 }
 
-.push-right {
-    padding-left: 10px;
-}
 
 .datepicker {
     margin: 0px;
@@ -176,4 +176,14 @@ input {
     .styledRadio {
         margin-right: 5px;
     }
+}
+
+
+.full-size-photo {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    width: 100%
 }

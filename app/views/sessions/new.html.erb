@@ -12,15 +12,18 @@ body {
 
 <div class = "main">
   <div class = "shaded container thin tall ">
-
   <h5>Don't have an account? <%= link_to "Sign up!", new_user_path %></h5>
     <%= form_for (:session) do |f| %>
-        <%= label_tag :username, "USERNAME:", class: "login-label" %>
-        <p><%= f.text_field :username %></p>
-        <%= label_tag :username, "PASSWORD:", class: "login-label" %>
-        <p><%= f.password_field :password %></p>
 
-        <p><%= f.submit "Log In", class: "submit-button" %></p>
+
+
+      <br>
+      <%= label_tag :username, "USERNAME:", class: "login-label" %>
+      <p><%= f.text_field :username %></p>
+      <%= label_tag :username, "PASSWORD:", class: "login-label" %>
+      <p><%= f.password_field :password %></p>
+
+      <p><%= f.submit "Log In", class: "submit-button" %></p>
 
     <% end %>
 

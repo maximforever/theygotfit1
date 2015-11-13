@@ -1,4 +1,6 @@
 <% u = @user %>
+<% imp = current_user.imperial if current_user  %>
+<% imp = true if !current_user  %>
 
 <div class = "index-header">
 </div>
@@ -29,7 +31,11 @@
                             <p><%= link_to "Record from #{r.date.strftime("%B %d, %Y")}", record_path(r.id) %></p>
                         </div>
                         <div class = "col-md-3">
-                            <p><%= r.weight %></p>
+                            <% if !imp %>
+                                <p><%=  r.to_kg %> kg</p>
+                            <% else %>
+                                <p><%=  r.weight %> lbs</p>
+                            <% end %>
                         </div>
                     <% end %>
 

@@ -1,5 +1,3 @@
-<h3>Search results:</h3>
-
 <h4>You searched: <%= params[:start_weight] %> to <%= params[:end_weight] %> 
     <% if params[:pounds] == "true" %> pounds
     <% else %> kilograms.
@@ -10,9 +8,9 @@
     <% u = User.find_by(id: @records[0][0].first.user_id) %>
 
     <h4> Found a record for <%= link_to u.name, user_path(u.id) %>. <%= link_to "Search again?", search_path %> </h4> 
-    <div class = "shaded ">
+
         <div class = "main">
-            <div class = "container short">
+            <div class = "container tall">
 
                 <% r = @records[0][0].first unless @records[0][0].nil? %>
                 
@@ -58,8 +56,7 @@
     <% else %>
         <div class = "errors">
             <p> No such record found. <%= link_to "Search again?", search_path %></p>
-        </div>
-    </div>    
+        </div>   
 <% end %>    
 
 

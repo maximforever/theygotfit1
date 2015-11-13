@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post '/records' => 'records#create'
   get '/record/:id' => 'records#show', as: :record
   get '/records/all' => 'records#index'
+  delete '/record/delete/:id' => 'records#delete', as: :delete_record
 
   get '/search' => 'records#search', as: :search
   get '/find' => 'records#find'

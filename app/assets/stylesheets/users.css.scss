@@ -24,7 +24,18 @@
     font-weight: 300;
 }
 
-.shaded .new-user .edit-metric {
+.shaded .edit-metric {
+
     text-align: left;
-    float: left
+    margin: 0px;
+    .col-md-6{
+        padding: 0px;
+    }
+    &.form-control{
+        display: inline-block;
+    }
+    &.thin-metric{
+        width: 80%;
+    }
 }
+

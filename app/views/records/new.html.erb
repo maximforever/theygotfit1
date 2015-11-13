@@ -59,9 +59,9 @@ body {
                 </div>
                 <div class = "col-md-4">
                     <div class = "search-metric">
-                        <p class = "weight-label"><%= radio_button_tag :inches, true %>in</p>
+                        <p class = "weight-label"><%= r.radio_button :inches, true, checked: current_user.imperial %>in</p>
                         <br>
-                        <p class = "weight-label"><%= radio_button_tag :inches, false %>cm</p>
+                        <p class = "weight-label"><%= r.radio_button :inches, false, checked: !(current_user.imperial) %>cm</p>
                     </div>
                 </div>
             </div>    

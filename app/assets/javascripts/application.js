@@ -61,8 +61,21 @@ var main = function(){
     $('.datepicker').pickadate({
         selectYears: true,
         selectMonths: true
-    })
-   
+    });
+
+    $('.profile-weight').mouseenter(function(){
+        $(this).find(".delete-rec:first").stop().fadeTo("fast", 1)
+      });
+
+    $('.profile-weight').mouseleave(function(){
+        $(".delete-rec").stop().fadeTo("fast", 0)
+
+      });
+
+    $('.pref-open-pane').click(function(){
+        $(".pref-pane").toggleClass("hidden");   
+    });
+
 
 };
 

@@ -1,6 +1,6 @@
 class RecordsController < ApplicationController
 
-    before_action :require_user, only: [:new]
+    before_action :require_user, only: [:new, :delete]
 
     def index
       @records = Record.all
@@ -26,7 +26,7 @@ class RecordsController < ApplicationController
 
       @record.user_id = current_user.id
       if @record.save
-        redirect_to user_path(session[:user_id])
+        redirect_to record_path(@record.id)
       else
         render new_record_path
       end
@@ -35,6 +35,12 @@ class RecordsController < ApplicationController
     def show
       @record = Record.find(params[:id])
       @user = User.find_by_id(@record.user_id)
+    end
+
+    def delete
+      @record = Record.find(params[:id])
+      @record.destroy
+      redirect_to root_path 
     end
 
 

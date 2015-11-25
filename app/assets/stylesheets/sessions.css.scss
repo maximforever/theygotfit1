@@ -45,7 +45,14 @@ input[type="text"], input[type="password"], input[type="email"], input[type="num
     &:hover {
         background: #FFBF5D;
     }
+    &.fat-submit{
+        padding: 3% 5% 3% 5%;
+    }
 }
+
+.fat-submit{
+        padding: 3% 5% 3% 5%;
+    }
 
 .remember-me{
     font-size: 14px;

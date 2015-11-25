@@ -7,7 +7,7 @@
         <% if current_user %>
             <%  u = current_user %>
             
-            <div class = "log-div">Hello, <%= link_to u.name, user_path(session[:user_id]) %>.</div>
+            <div class = "log-div">Hello, <%= link_to u.name, user_path(current_user.id) %>.</div>
             <div class = "log-div"><%= link_to "Add Record", new_record_path %></div>
             <div class = "log-div"><%= link_to "Settings", preferences_path(current_user.id) %></div>
             <div class = "log-div"><a class = "pref-open-pane">Test</a></div>

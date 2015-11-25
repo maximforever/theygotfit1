@@ -1,0 +1,25 @@
+<style type="text/css">
+body {
+  background: url(<%= randomized_background_image %>) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+}
+</style>
+
+
+
+<div class = "main">
+  <div class = "shaded container thin tall ">
+  
+    <%= form_tag password_resets_path, :method => :post do %>
+    
+          <%= label_tag :email, "EMAIL:", class: "login-label" %>
+          <%= email_field_tag :email, params[:email] %>
+          <%= submit_tag "Reset Password", class: "submit-button" %>
+
+  <% end %>
+
+  </div>
+</div>

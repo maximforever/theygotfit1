@@ -49,6 +49,26 @@ overflow-x: hidden;
   box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
+
+ .alert {
+    color: black;
+    padding: 10px;
+    margin-top: 3%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    max-width: 30%;
+    border: 1px solid black;
+    border-radius: 0px;
+    &.alert-error{
+        background: #FF665A;
+    }
+    &.alert-success{
+        background: #64C83F;   
+    }
+ }
+
+
 .errors {
     color: black;
     padding: 20px;

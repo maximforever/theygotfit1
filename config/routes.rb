@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root 'pages#index'
 
   get '/about' => 'pages#about'
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
   get '/user/:id/edit/' => 'users#edit', as: :preferences
   patch '/user/:id' => 'users#update'
+  delete '/user/:id' => 'users#destroy', as: :delete_user
 
 
   get '/login' => 'sessions#new', as: :login 
@@ -26,6 +28,16 @@ Rails.application.routes.draw do
 
   get '/search' => 'records#search', as: :search
   get '/find' => 'records#find'
+
+
+  resources :password_resets
+
+
+  resources :users do
+    member do
+      get :confirm_email
+    end
+  end
 
 
 

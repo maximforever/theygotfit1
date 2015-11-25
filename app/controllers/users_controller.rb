@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-before_action :require_user, only: [:edit]
+before_action :require_user, only: [:edit, :destroy, :update]
 
   def index
     @users = User.all
@@ -12,10 +12,19 @@ before_action :require_user, only: [:edit]
 
   def create
     @user = User.new(user_params)
+    @user.username.downcase!
+    @user.email.downcase!
     @user.imperial = true
     if @user.save
+      UserMailer.registration_confirmation(@user).deliver
+        flash[:success] = "Please confirm your email address to continue."
+        redirect_to root_url
+
+=begin
       session[:user_id] = @user.id
       redirect_to '/users'
+=end
+
     else
       render new_user_path
     end
@@ -39,6 +48,31 @@ before_action :require_user, only: [:edit]
     end
   end
 
+
+  def confirm_email
+      user = User.find_by_confirm_token(params[:id])
+      if user
+        user.email_activate
+        flash[:success] = "Welcome to TheyGotFit! Your email has been confirmed.
+        Please sign in to continue."
+        redirect_to login_path
+      else
+        flash[:error] = "Sorry. This user does not exist."
+        redirect_to root_path
+      end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    session[:user_id] = nil if @user.id == session[:user_id]
+    @user.destroy
+    flash[:error] = "Your account has been deleted."
+    redirect_to root_path
+  end
+
+  def resend
+    UserMailer.registration_confirmation(@user).deliver
+  end
 
 
   private

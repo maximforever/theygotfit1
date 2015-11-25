@@ -16,6 +16,13 @@
 
 
 <%= render "/shared/header" %>
+
+
+<% flash.each do |message_type, message| %>
+    <%= sanitize(content_tag(:div, message, class: "alert alert-#{message_type}")) %>
+<% end %>
+
+
 <div class = "pref-pane hidden"></div>
 <%= yield %>
 

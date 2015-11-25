@@ -37,11 +37,7 @@ gem 'kaminari'
 # gem to pull random record
 gem 'randumb'
 
-#gem for better forms
-gem 'simple_form'
-
 #yet another datepicker...
-
 gem 'pickadate-rails'
 
 

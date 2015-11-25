@@ -43,4 +43,23 @@ input[type="text"], input[type="password"], input[type="email"], input[type="num
     }
 }
 
+.remember-me{
+    font-size: 14px;
+    text-align: left;
+    clear: both;
+}
+
+.password-reset-link {
+
+    float: right;
+    line-height: 30px;
+    position: relative;
+    vertical-align: bottom;
+}
+
+.no-pad{
+    padding-bottom: 0px;
+}
+
+
 

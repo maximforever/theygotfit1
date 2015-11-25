@@ -1,1 +1,12 @@
-<h3>This is gonna be the about me page</h3>
+<div class = "main">
+    <div class = "container shaded tall thin about-me">
+        <p>TheyGotFit is a tool inspired by <%= link_to "/r/progresspics", "http://reddit.com/r/progresspics", target: "_blank" %>. I wrote it after being frustrated searching page after page for people used to look like I do now now, and have made the transformation I want to make.</p>
+        <p>TheyGotFit is also an exercise in engineering and product management. I wrote in the Fall of 2015 it ater completing <%= link_to "Codecademy Labs", "https://www.codecademy.com", target: "_blank" %> early in 2015. I wanted to apply the skills I was learning and build a tool I myself would use. TheyGotFit is built on Ruby on Rails with jQuery and Bootstrap.</p>
+        <% if @users > 100 %>
+            <p>TheyGotFit currently has <span class = "num-users"><%= @users %></span> users who've contributed a total of <span class = "num-users"><%= @records %></span> records.</p>
+        <% end %>
+        <p>When I'm not untangling routes or obsessing over pixels, you can find me <%= link_to "composing music", "http://soundcloud.com/maxim-pekarskiy/sets", target: "_blank" %>, <%= link_to "working out", "#", target: "_blank" %>, <%= link_to "crowdfunding", "http://lookingforbagpipes.wordpress.com", target: "_blank" %>, and helping build things people love  <%= link_to "at NYC tech startups", "https://www.linkedin.com/in/maxim-pekarsky-188ab816", target: "_blank" %>.
+        <p>Have a suggestion or a comment, or just want to say hello? I'd love to hear from you. <%= mail_to "pekarsky.maxim@gmail.com", "Shoot me an email" %>, or tweet me <%= link_to "@maxverse", "http://twitter.com/maxverse", target: "_blank" %>.</p>
+        <p>
+    </div>
+</div>

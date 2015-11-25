@@ -11,7 +11,7 @@ body {
 
 
 <div class = "main">
-  <div class = "shaded container thin tall ">
+  <div class = "container shaded thin tall ">
       <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
 
         <% if @user.errors.any? %>

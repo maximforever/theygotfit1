@@ -94,5 +94,10 @@ a {
   }
     &:active{
       text-decoration: none;
+      color: #187FF2;
+    }
+    &:focus{
+      text-decoration: none;
+      color: #187FF2;
     }
 }

@@ -29,10 +29,14 @@ input[type="text"], input[type="password"], input[type="email"], input[type="num
 }
 
 .submit-button {
-    padding: 25px  35px 25px 35px ;
-    background: #187FF2;
 
+    background: #187FF2;
+    
+    
     font-size: 23px;
+    padding: 25px  35px 25px 35px;
+    padding: 6% 9% 6% 9%;
+    font-size: 1.5vw;
     font-weight: 400;
     border: none;
     margin-bottom: 20px;

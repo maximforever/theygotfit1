@@ -13,6 +13,8 @@ class PagesController < ApplicationController
   end
 
   def about
+    @users = User.all.count
+    @records = Record.all.count
   end
 
 

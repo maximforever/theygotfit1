@@ -1,0 +1,42 @@
+
+
+
+<div class = "col-md-6">
+    <div class = "one-record">
+        <%= r.date.strftime("%B %d, %Y") %>
+        <div class = "photo-container">
+            <%= image_tag r.photo, class: "record-photo" %>
+        </div>
+
+        <p class = "caption"><%= r.caption %></p>
+
+        <div class = "row supporting-photos-row">
+            <div class = "col-md-4">
+                <div class = "little-photo-container">
+                    <%= image_tag "https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg", class: "little-photo" %>
+                </div>
+            </div>
+            <div class = "col-md-4">
+                <div class = "little-photo-container">
+                    <%= image_tag "http://static.tumblr.com/81b6d42b4064def5e9062d5f4410c820/betml74/Yl5ml0lia/tumblr_static_impress.jpg", class: "little-photo" %>
+                </div>
+            </div>
+            <div class = "col-md-4">
+                <div class = "little-photo-container">
+                    <%= image_tag "http://rufflifechicago.com/wp-content/uploads/cat-treats.jpg", class: "little-photo" %>
+                </div>
+            </div>
+        </div>
+
+        <p>Height: <%= r.height %>
+            <% if r.inches %>
+            centimeters
+            <% else %>
+            inches
+            <% end %>
+        </p>
+
+        <p>Weight: <%= r.weight %> pounds / <%= r.to_kg %> kilograms</p>
+        <p>Date: <%= r.date.strftime("%B %d, %Y") %></p>
+    </div>
+</div>

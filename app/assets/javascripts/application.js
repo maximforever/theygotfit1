@@ -77,6 +77,41 @@ var main = function(){
     });
 
 
+    var main_photo = $(".record-photo").attr("src");
+    var clicked = false
+
+//    this handles little picture clicks
+
+    $('.little-photo').mouseenter(function(){
+
+        $(".record-photo").attr("src",$(this).attr("src"));
+        $(this).attr("src", main_photo);
+    });
+
+    $('.little-photo').mouseleave(function(){
+        if(!clicked){
+            $(this).attr("src", $(".record-photo").attr("src"));
+            $(".record-photo").attr("src", main_photo);
+        }
+        clicked = false;
+    });
+
+    $('.little-photo').click(function(){
+        var small_photo = $(this).attr("src");
+        var big_photo = $(".record-photo").attr("src");
+        $(".record-photo").attr("src", big_photo);
+        $(this).attr("src", small_photo);
+        main_photo = $(".record-photo").attr("src"); 
+        clicked = true;
+    });
+
+    $('.record-photo').click(function(){
+        console.log("big picture shows!");
+        //to be filled in later
+
+    });
+
+
 };
 
 $(document).ready(main);

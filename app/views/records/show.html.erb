@@ -1,3 +1,10 @@
+<style type="text/css">
+body {
+    background: rgba(51, 51, 51, 0.9);
+    color: #C4E0FF;
+}
+</style>
+
 <% r = @record %>
 <% u = User.find_by_id(r.user_id) %>
 <% imp = current_user.imperial if current_user  %>
@@ -12,8 +19,9 @@
         <div class = "col-md-2">
         </div>
         <div class = "col-md-6 one-record">
-            
-            <%= image_tag r.photo, class: "record-photo" %>
+            <div class = "photo-container">
+                <%= image_tag r.photo, class: "record-photo" %>
+            </div>
             <p class = "caption"><%= r.caption %></p>
         </div>
         <div class = "col-md-4 records-section large">
@@ -28,8 +36,7 @@
                 <p>Height: <%=  r.height %> inches</p>
 
             <% end %>  
-            
-            
+                 
         </div>
     </div>
         

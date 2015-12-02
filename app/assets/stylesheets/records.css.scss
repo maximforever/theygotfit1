@@ -49,6 +49,60 @@ input[type=number]::-webkit-outer-spin-button {
     object-fit: cover;
 }
 
+.record-heading {
+    font-size: 18px;
+    width: 95%;
+    margin-bottom: 3%;
+    margin-right: auto;
+    margin-left: auto;
+
+    .col-md-5{
+        text-align: right;
+        .record-detail{
+            margin-left: 15px;
+        }
+    }
+    .col-md-7{
+        text-align: left;
+    }
+}
+
+.record-detail{
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 10px;
+    background: rgba(51, 51, 51, 1);
+    border: 1px solid black;
+    max-width: 35%;
+
+    display: inline;
+}
+
+.pull-right{
+    display: inline;
+    float:right;
+
+}
+
+.pull-left{
+    display: inline;
+    float:left;
+}
+
+
+.record-caption{
+    text-align: center;
+    font-size: 16px;
+    padding: 3px;
+    margin-top: 10px;
+    background: rgba(51, 51, 51, 1);
+    border: 1px solid black;
+    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
 .one-record {
     text-align: center;
 }
@@ -223,4 +277,25 @@ input {
     height: 100%;
     object-fit: cover;
 
+}
+
+/* Navigation Bar */
+
+.navigation {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    font-size: 160px;
+    color: #FFBF5D;
+    z-index: 2;
+    .left-nav{
+        text-align: left;
+    }
+    .right-nav{
+        text-align: right;
+    }
+
+    i:hover{
+        color: #187FF2;
+    }
 }

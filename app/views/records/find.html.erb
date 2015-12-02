@@ -36,12 +36,29 @@ body {
                     <%= render partial: "shared/record", locals: {r: @records[0][0].first} unless @records[0][0].nil?  %> 
                     <%= render partial: "shared/record", locals: {r: @records[0][1].first} unless @records[0][0].nil?  %>
                 <%= paginate @records %>
+
+
             </div>
         </div>
+        <div class = "navigation">
+            <div class = "row">
+                <div class = "col-md-6 left-nav">
+                    <%= link_to do %>
+                        <i class="glyphicon glyphicon-chevron-left" title="Previous Page"></i>
+                    <% end %>
+                </div>
+                    
+                <div class = "col-md-6 right-nav">
+                    <i class="glyphicon glyphicon-chevron-right" title="Last Page"></i>
+                </div>
+            </div>
+        </div>  
     <% else %>
         <div class = "errors">
             <p> No such record found. <%= link_to "Search again?", search_path %></p>
         </div>   
+
+
 <% end %>    
 
 

@@ -76,32 +76,41 @@ var main = function(){
         $(".pref-pane").toggleClass("hidden");   
     });
 
-
-    var main_photo = $(".record-photo").attr("src");
     var clicked = false
 
 //    this handles little picture clicks
 
     $('.little-photo').mouseenter(function(){
 
-        $(".record-photo").attr("src",$(this).attr("src"));
-        $(this).attr("src", main_photo);
+        $(this).parents().eq(0).css("border", "5px solid #FFBF5D")
+        
+        big_photo = $(this).parents().eq(2).siblings(".photo-container").find(".record-photo");
+        big_photo_src = big_photo.attr("src");
+
+        big_photo.attr("src",$(this).attr("src"));
+        $(this).attr("src", big_photo_src);
     });
 
     $('.little-photo').mouseleave(function(){
+        $(this).parents().eq(0).css("border", "5px solid rgba(30, 30, 30, 1)")
+        $(".photo-container").css("border", "15px solid rgba(51, 51, 51, 0.8)");
         if(!clicked){
-            $(this).attr("src", $(".record-photo").attr("src"));
-            $(".record-photo").attr("src", main_photo);
+            big_photo = $(this).parents().eq(2).siblings(".photo-container").find(".record-photo");
+            big_photo_src = big_photo.attr("src");
+            big_photo.attr("src", $(this).attr("src"));
+            $(this).attr("src", big_photo_src);
+            
         }
         clicked = false;
     });
 
     $('.little-photo').click(function(){
-        var small_photo = $(this).attr("src");
-        var big_photo = $(".record-photo").attr("src");
-        $(".record-photo").attr("src", big_photo);
+        small_photo = $(this).attr("src");
+        $(this).parents().eq(0).css("border", "5px solid #C4E0FF");
+        big_photo = $(this).parents().eq(2).siblings(".photo-container").find(".record-photo");
+        $(this).parents().eq(2).siblings(".photo-container").css("border", "15px solid #C4E0FF");
+        big_photo.attr("src", big_photo.attr("src"));
         $(this).attr("src", small_photo);
-        main_photo = $(".record-photo").attr("src"); 
         clicked = true;
     });
 
@@ -110,6 +119,7 @@ var main = function(){
         //to be filled in later
 
     });
+
 
 
 };

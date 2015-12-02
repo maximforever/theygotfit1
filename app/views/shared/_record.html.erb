@@ -3,12 +3,38 @@
 
 <div class = "col-md-6">
     <div class = "one-record">
-        <%= r.date.strftime("%B %d, %Y") %>
+        
+        <div class = "record-heading">
+            <div class = "row">
+                <div class = "col-md-7">
+                    <div class = "record-detail"><%= r.date.strftime("%B %d, %Y") %></div>
+                </div>
+                <div class = "col-md-5">
+                    <div class = "record-detail">
+                       <% if params[:pounds] == "true" %>
+                       <%= r.weight %> lbs
+                        <% else %>
+                        <%= r.to_kg %> kgs
+                        <% end %>
+                    </div>
+                    <div class = "record-detail">
+                        <% if params[:inches] == "true" %>
+                        <%= r.height %>
+                        in
+                        <% else %>
+                        <%= r.to_cm %>
+                        cm
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class = "photo-container">
             <%= image_tag r.photo, class: "record-photo" %>
         </div>
 
-        <p class = "caption"><%= r.caption %></p>
+        <div class = "record-caption"><%= r.caption %></div>
 
         <div class = "row supporting-photos-row">
             <div class = "col-md-4">
@@ -28,15 +54,5 @@
             </div>
         </div>
 
-        <p>Height: <%= r.height %>
-            <% if r.inches %>
-            centimeters
-            <% else %>
-            inches
-            <% end %>
-        </p>
-
-        <p>Weight: <%= r.weight %> pounds / <%= r.to_kg %> kilograms</p>
-        <p>Date: <%= r.date.strftime("%B %d, %Y") %></p>
     </div>
 </div>

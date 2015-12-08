@@ -32,7 +32,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 
 # gem for pagination
-gem 'kaminari'
+gem 'kaminari', github: 'amatsuda/kaminari'
 
 # gem to pull random record
 gem 'randumb'

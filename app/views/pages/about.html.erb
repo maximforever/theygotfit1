@@ -1,7 +1,7 @@
 <div class = "main">
-    <div class = "container shaded tall thin about-me">
-        <p>TheyGotFit is a tool inspired by <%= link_to "/r/progresspics", "http://reddit.com/r/progresspics", target: "_blank" %>. I wrote it after being frustrated searching page after page for people used to look like I do now now, and have made the transformation I want to make.</p>
-        <p>TheyGotFit is also an exercise in engineering and product management. I wrote in the Fall of 2015 it ater completing <%= link_to "Codecademy Labs", "https://www.codecademy.com", target: "_blank" %> early in 2015. I wanted to apply the skills I was learning and build a tool I myself would use. TheyGotFit is built on Ruby on Rails with jQuery and Bootstrap.</p>
+    <div class = "container shaded short thin about-me">
+        <p>TheyGotFit is a tool inspired by <%= link_to "/r/progresspics", "http://reddit.com/r/progresspics", target: "_blank" %>. I wrote it after being frustrated by looking through page after page for people with my weight who have made the transformation I want to make.</p>
+        <p>TheyGotFit is also an exercise in engineering and product management. After ater completing <%= link_to "Codecademy Labs", "https://www.codecademy.com", target: "_blank" %> early in 2015, I wanted to apply the skills I was learning and build a tool I myself would use. TheyGotFit is built on Ruby on Rails with jQuery and Bootstrap.</p>
         <% if @users > 100 %>
             <p>TheyGotFit currently has <span class = "num-users"><%= @users %></span> users who've contributed a total of <span class = "num-users"><%= @records %></span> records.</p>
         <% end %>

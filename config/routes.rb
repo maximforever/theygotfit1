@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
 
-  root 'pages#index'
+  root 'records#search'
 
+  get '/home' => 'pages#index', as: :profile
   get '/about' => 'pages#about'
 
   get '/users' => 'users#index'

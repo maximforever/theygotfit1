@@ -8,6 +8,10 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; 
 }
 
+.find-main{
+    position: relative;
+}
+
 .shaded {
     text-align: center;
     color: #C4E0FF;
@@ -279,23 +283,34 @@ input {
 
 }
 
+.blue-weight {
+    color: #187FF2;
+}
+
 /* Navigation Bar */
 
 .navigation {
-    width: 100%;
-    position: absolute;
-    top: 50%;
     font-size: 160px;
-    color: #FFBF5D;
-    z-index: 2;
-    .left-nav{
-        text-align: left;
+    .left-nav {
+        position: absolute;
+        top: 40%;
+        left: 0;
     }
-    .right-nav{
-        text-align: right;
+    .right-nav {
+        position: absolute;
+        top: 40%;
+        right: 0;
+    }
+
+    a{
+        color: #C4E0FF;
     }
 
     i:hover{
         color: #187FF2;
     }
 }
+
+
+
+

@@ -20,11 +20,6 @@ before_action :require_user, only: [:edit, :destroy, :update]
         flash[:success] = "Please confirm your email address to continue."
         redirect_to root_url
 
-=begin
-      session[:user_id] = @user.id
-      redirect_to '/users'
-=end
-
     else
       render new_user_path
     end

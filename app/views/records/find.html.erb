@@ -9,10 +9,9 @@ body {
 
     <% u = User.find_by(id: @records[0][0].first.user_id) %>
 
-    
-
-        <div class = "main">
+        <div class = "main find-main">
             <div class = "container ">
+            <p><%=  %></p>
                 <h4 class = "your-search"><%= params[:start_weight] %> to <%= params[:end_weight] %> 
                     <% if params[:pounds] == "true" %> lbs.
                     <% else %> kgs.
@@ -25,8 +24,8 @@ body {
                     <% end %>
                     <%= link_to "Search again?", search_path %>
                 </h4>
-                <h2  class = "centered"> Found <%= @rnum %> 
-                    <% if @rnum > 1 %> 
+                <h2  class = "centered"> Found <%= @pages %> 
+                    <% if @pages > 1 %> 
                         records.
                     <% else %> 
                         record. 
@@ -40,19 +39,23 @@ body {
 
             </div>
         </div>
-        <div class = "navigation">
-            <div class = "row">
-                <div class = "col-md-6 left-nav">
-                    <%= link_to do %>
+
+        <% if @pages > 1 && @pages %>
+            <div class = "navigation">
+                <div class = "left-nav">
+
+                    <%= link_to go_to_previous_page(request.original_url, @pages) do %>
                         <i class="glyphicon glyphicon-chevron-left" title="Previous Page"></i>
                     <% end %>
                 </div>
-                    
-                <div class = "col-md-6 right-nav">
-                    <i class="glyphicon glyphicon-chevron-right" title="Last Page"></i>
+
+                <div class = "right-nav">
+                    <%= link_to go_to_next_page(request.original_url, @pages) do %>
+                        <i class="glyphicon glyphicon-chevron-right" title="Last Page"></i>
+                    <% end %>
                 </div>
             </div>
-        </div>  
+        <% end %>  
     <% else %>
         <div class = "errors">
             <p> No such record found. <%= link_to "Search again?", search_path %></p>

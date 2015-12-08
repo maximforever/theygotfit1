@@ -50,8 +50,8 @@ class RecordsController < ApplicationController
     def find
 #     @records = Record.master(params[:start_weight], params[:end_weight]).page(params[:page])
       pull = Record.master(params[:start_weight], params[:end_weight], params[:pounds], params[:gender], params[:height], params[:inches])
-      @rnum = pull.size
       @records = Kaminari.paginate_array(pull).page(params[:page]).per(1)
+      @pages = @records.total_pages
     end
 
     private

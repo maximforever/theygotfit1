@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
         else
           cookies[:auth_token] = @user.auth_token 
         end
-        redirect_to root_path
+        redirect_to profile_path
 
       else
         flash[:error] = "Please check your email to activate your account."

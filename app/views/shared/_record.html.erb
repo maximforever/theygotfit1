@@ -5,19 +5,15 @@
     <div class = "one-record">
         
         <div class = "record-heading">
-            <div class = "row">
-                <div class = "col-md-7">
-                    <div class = "record-detail"><%= r.date.strftime("%B %d, %Y") %></div>
-                </div>
-                <div class = "col-md-5">
-                    <div class = "record-detail">
-                       <% if params[:pounds] == "true" %>
-                       <%= r.weight %> lbs
-                        <% else %>
-                        <%= r.to_kg %> kgs
-                        <% end %>
-                    </div>
-                    <div class = "record-detail">
+
+
+                    <div class = "record-detail"><%= r.date.strftime("%B %d, %Y") %> |
+                        <span class = "blue-weight">
+                            <% if params[:pounds] == "true" %>
+                                <%= r.weight %> lbs
+                                <% else %>
+                                <%= r.to_kg %> kgs
+                            <% end %> </span>|
                         <% if params[:inches] == "true" %>
                         <%= r.height %>
                         in
@@ -25,9 +21,8 @@
                         <%= r.to_cm %>
                         cm
                         <% end %>
-                    </div>
-                </div>
-            </div>
+                    </div>  
+
         </div>
 
         <div class = "photo-container">

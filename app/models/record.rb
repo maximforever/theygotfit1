@@ -1,4 +1,7 @@
 class Record < ActiveRecord::Base
+
+  require 'open-uri'
+
   belongs_to :user
 
 
@@ -117,9 +120,8 @@ class Record < ActiveRecord::Base
       if !rec.nil? 
         this_user = User.find_by_id(rec.user_id) 
         puts "TESTING REC FOR #{this_user.name}"
-        this_weight_difference = (find_closest_w_user(ending, this_user).first.weight.to_f - ending.to_f).abs
-        
 
+        this_weight_difference = (find_closest_w_user(ending, this_user).first.weight.to_f - ending.to_f).abs
         this_height_difference = (find_closest_w_user(starting, this_user).first.height.to_f - height.to_f).abs if height
         
 
@@ -129,8 +131,8 @@ class Record < ActiveRecord::Base
         if (this_weight_difference <= 5 && !all_users.include?(this_user))
           #if there's a matching set of records, we package these records into an array and push that into our final array.
           one_user = []
-          start_record =  find_closest_w_user(starting, this_user)  
-          end_record   =  find_closest_w_user(ending, this_user)
+          start_record =  find_closest_w_user(starting, this_user)    # this returns a record. To open, start_record.first
+          end_record   =  find_closest_w_user(ending, this_user)      # this returns a record. To open, end_record.first
 
 
           #if gender isn't both, we make the record invalid IF it's the wrong gender or the height is off by more than 3 inches
@@ -148,17 +150,31 @@ class Record < ActiveRecord::Base
             end
           end
 
+          #if the photo has been removed, we want to make the record invalid:
+        
+          s1 = urlExists?(start_record.first.photo)
+          s2 = urlExists?(end_record.first.photo)
 
+          if s1 == 404 || s2 == 404 
+            start_record = end_record
+            puts "ONE OF THE RECORDS IS BROKEN"
+          end
+
+          # now we push all the records
 
           unless (start_record == end_record)
-            all_users.push(this_user)
-            one_user.push(start_record, end_record)
-            one_user.push()
-            @@final_set_of_records.push(one_user)
+            all_users.push(this_user)                  # this keeps track of the users in the array so far.
+            one_user.push(start_record, end_record)    # this is an array of... two records.
+#            one_user.push()                           # no clue what this line does. assuming typo. 
+            @@final_set_of_records.push(one_user)      # this array contains an array of two records.
+                                                       # to access one, we need to say r[0][0].first
+                                                       #   r[first set of records][first record].actual first record
             puts "SUCCESS! Adding #{this_user.name} to the array!"
           end
           puts "The array now includes #{@@final_set_of_records}"
         end
+
+#         !!!!---- I SERIOUSLY NEED TO unpackage these records, and return a 2D array, two records each - no .first --!!!!!
 
       end
     end
@@ -187,9 +203,10 @@ class Record < ActiveRecord::Base
 
   def self.find_closest(num)
     if (!num.nil?)
-      ref = Record.all.collect {|x| x.weight}
-      min = ref.min_by { |x| (x.to_f - num.to_f).abs }
-      best_record = Record.find_by(weight: min)
+      ref = Record.all.collect {|x| x.weight}   # this collects all the weights from every single record
+      min = ref.min_by { |x| (x.to_f - num.to_f).abs }      # this finds the closest weight
+      # *!!!!!* What if there are multiple weights??    
+      best_record = Record.find_by(weight: min)  # this searches all the records by that weight 
       puts "The closest record is #{best_record} with the weight #{best_record.weight}"
       return best_record
     end
@@ -210,6 +227,18 @@ class Record < ActiveRecord::Base
     weights.sort
   end
 
+
+  def self.urlExists?(url)
+    begin 
+      contents = open(url)
+      status = 200
+    rescue OpenURI::HTTPError
+      puts "Can't find that URL!"
+      status = 404
+    end
+    return status
+  end
+
   def to_pounds
     return (self.weight*2.2046).round
   end
@@ -225,6 +254,17 @@ class Record < ActiveRecord::Base
   def to_cm
     return (self.height/0.393701).round
   end
+
+=begin
+  def to_next_page(num_pages, url)
+      url += "&page=1" unless url.include?("page=")
+  end
+
+  def to_last_page(num_pages, url)
+
+  end
+=end
+
 
 
 

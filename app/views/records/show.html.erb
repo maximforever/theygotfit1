@@ -20,7 +20,7 @@ body {
         </div>
         <div class = "col-md-6 one-record">
             <div class = "photo-container">
-                <%= image_tag r.photo, class: "record-photo" %>
+                <%= image_tag r.photo, class: "record-photo", onerror: "this.src='assets/no-photo.jpg';" %>
             </div>
             <p class = "caption"><%= r.caption %></p>
         </div>

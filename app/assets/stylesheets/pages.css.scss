@@ -84,3 +84,24 @@ color: #187FF2;
         color: #FFBF5D;
      }
 }
+
+.blue-link{
+    display: inline-block;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background: #187FF2;
+    color: black;
+    &:hover{
+        color: black;
+        background: #FFBF5D;
+    }
+    a {
+        display: block;
+        color: black;
+    }
+    a:hover{
+        color: black;
+    }
+}

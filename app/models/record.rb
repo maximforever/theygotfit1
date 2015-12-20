@@ -3,6 +3,7 @@ class Record < ActiveRecord::Base
   require 'open-uri'
 
   belongs_to :user
+  serialize :other_photos, Array
 
 
   validates :date,
@@ -229,13 +230,20 @@ class Record < ActiveRecord::Base
 
 
   def self.urlExists?(url)
+#    puts "Starting to test for #{url}"
     begin 
       contents = open(url)
+  #    status = 404 if contents.base_uri = "http://i.imgur.com/removed.png"
       status = 200
     rescue OpenURI::HTTPError
       puts "Can't find that URL!"
       status = 404
     end
+      puts "contents.base_uri: #{contents.base_uri}"
+      if contents.base_uri.to_s == "http://i.imgur.com/removed.png"
+        status = 404 
+        puts "Got an broken Imgur page!"
+      end
     return status
   end
 

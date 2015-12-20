@@ -24,16 +24,26 @@ body {
             <br>
             <br>
         <% end %>
-            <%= label_tag :name, "IMAGE URL:", class: "login-label" %>
-            <p><%= r.text_field :photo, size: 50 %></p>
-            <%= label_tag :name, "DATE TAKEN:", class: "login-label" %>
+            <%= label_tag :photo, "IMAGE URL:", class: "login-label" %>
+            <p><%= r.text_field :photo, size: 50 %></p>    
+
+            <div class "extra-photos">
+                <%= label_tag :name, "IMAGE URL #2:", class: "login-label" %>
+                <p><%= text_field_tag "other_photos[]" %></p>
+                <%= label_tag :name, "IMAGE URL #2:", class: "login-label" %>
+                <p><%= text_field_tag "other_photos[]" %></p>
+                <%= label_tag :name, "IMAGE URL #2:", class: "login-label" %>
+                <p><%= text_field_tag "other_photos[]" %></p>
+
+            </div>
 
 
+            <%= label_tag :date, "DATE TAKEN:", class: "login-label" %>
             <input class = "datepicker" name = "record[date]" id = "record_date" data-value="2012/02/01">
 
             <br>
             <br>
-            <%= label_tag :name, "WEIGHT:", class: "login-label" %>
+            <%= label_tag :weight, "WEIGHT:", class: "login-label" %>
             <br>
             <div class = "row newrec-weights-row">
                 <div class = "col-md-8">                    

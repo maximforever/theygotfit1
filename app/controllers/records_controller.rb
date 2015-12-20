@@ -2,6 +2,7 @@ class RecordsController < ApplicationController
 
     before_action :require_user, only: [:new, :delete]
 
+
     def index
       @records = Record.all
     end
@@ -12,8 +13,10 @@ class RecordsController < ApplicationController
     end
 
     def create
-      @record = Record.new(record_params)
       
+      @record = Record.new(record_params)
+      @record.other_photos = params[:other_photos]
+
       if @record.pounds == "false" || !@record.pounds
         @record.weight = @record.to_pounds
         @record.pounds = true
@@ -23,6 +26,10 @@ class RecordsController < ApplicationController
         @record.height = @record.to_inches
         @record.inches = true
       end
+
+
+      
+
 
       @record.user_id = current_user.id
       if @record.save
@@ -40,7 +47,8 @@ class RecordsController < ApplicationController
     def delete
       @record = Record.find(params[:id])
       @record.destroy
-      redirect_to root_path 
+      redirect_to profile_path
+      flash[:success] = "The record has been deleted"
     end
 
 
@@ -57,7 +65,7 @@ class RecordsController < ApplicationController
     private
 
     def record_params
-      params.require(:record).permit(:photo, :weight, :height, :pounds, :inches, :caption, :date, :user_id)
+      params.require(:record).permit(:photo, :weight, :height, :pounds, :inches, :caption, :date, :user_id, {:other_photos =>[] })
     end
 
 

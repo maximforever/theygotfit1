@@ -86,6 +86,11 @@ var main = function(){
         $(".pref-pane").toggleClass("hidden");   
     });
 
+    $('.get-more-photos').click(function(){
+        $(".extra-photos").toggleClass("hidden");
+        $(".photo-arrow").toggleClass("glyphicon-triangle-bottom");   
+    });
+
     var clicked = false
 
 //    this handles little picture clicks

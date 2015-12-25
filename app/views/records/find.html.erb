@@ -22,14 +22,15 @@ body {
                         <% else %> cm.
                         <% end %>
                     <% end %>
-                    <%= link_to "Search again?", search_path %>
-                </h4>
-                <h2  class = "centered"> Found <%= @pages %> 
+                    Found <%= @pages %> 
                     <% if @pages > 1 %> 
                         records.
                     <% else %> 
                         record. 
                     <% end %>
+                    <%= link_to "Search again?", search_path %>
+                </h4>
+                <h2  class = "centered"> 
                     Here is <%= link_to u.name, user_path(u.id) %>, <%= u.age %>:</h2> 
                 <div class = "row">
                     <%= render partial: "shared/record", locals: {r: @records[0][0].first} unless @records[0][0].nil?  %> 

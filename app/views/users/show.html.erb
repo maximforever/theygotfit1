@@ -1,4 +1,4 @@
-<% u = @user %>
+RE u = @user %>
 <% imp = current_user.imperial if current_user  %>
 <% imp = true if !current_user  %>
 
@@ -28,7 +28,7 @@
                 <h3><%= u.username %>'s records:</h3>
                     <% @records.each do |r| %>
                         <div class = "col-md-9">
-                            <p><%= link_to "Record from #{r.date.strftime("%B %d, %Y")}", record_path(r.id) %></p>
+                            <p><%= link_to "#{r.date.strftime("%B %d, %Y")}", record_path(r.id) %></p>
                         </div>
                         <div class = "col-md-3">
                             <% if !imp %>

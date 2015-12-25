@@ -22,4 +22,5 @@ module ApplicationHelper
     images[rand(images.size)]
   end
 
+
 end

@@ -72,6 +72,16 @@ var main = function(){
 
       });
 
+    $('.profile-text-weight').mouseenter(function(){
+        $(this).parent('.col-md-8').next('.col-md-4').first().find(".delete-rec:first").stop().fadeTo("fast", 1)
+      });
+
+    $('.profile-text-weight').mouseleave(function(){
+        $(".delete-rec").stop().fadeTo("fast", 0)
+
+      });
+
+
     $('.pref-open-pane').click(function(){
         $(".pref-pane").toggleClass("hidden");   
     });

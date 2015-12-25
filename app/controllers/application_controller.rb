@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
     redirect_to search_path unless current_user
   end
 
+  def require_account
+    redirect_to new_user_path unless current_user
+  end
+
 end

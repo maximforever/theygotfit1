@@ -30,7 +30,7 @@ body {
                     <% else %> 
                         record. 
                     <% end %>
-                    Here is <%= link_to u.name, user_path(u.id) %>:</h2> 
+                    Here is <%= link_to u.name, user_path(u.id) %>, <%= u.age %>:</h2> 
                 <div class = "row">
                     <%= render partial: "shared/record", locals: {r: @records[0][0].first} unless @records[0][0].nil?  %> 
                     <%= render partial: "shared/record", locals: {r: @records[0][1].first} unless @records[0][0].nil?  %>

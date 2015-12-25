@@ -8,6 +8,9 @@ class PagesController < ApplicationController
     @records = current_user.records.order(date: :desc)
   end
 
+  def faq
+  end
+  
   def special
     @user = current_user
   end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get '/home' => 'pages#index', as: :profile
   get '/about' => 'pages#about'
+  get '/faq' => 'pages#faq', as: :faq
 
   get '/users' => 'users#index'
   get '/user/:id' => 'users#show', as: :user

@@ -34,9 +34,11 @@ before_action :require_user, only: [:edit, :destroy, :update]
     @user = User.find(params[:id])
   end
 
+
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
+      flash[:success] = "Your preferences have been updated!"
       redirect_to preferences_path
     else
       render 'edit'

@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, uniqueness: { message: "is already in use" }
   validates :username, presence: true, uniqueness: { message: " is already in use" }
-  validates :password, presence: true
+  validates :password, presence: true, on: :create
   validates :age, presence: true
   validates :zipcode, presence: true
   validates :name, presence: true

@@ -1,7 +1,7 @@
 class RecordsController < ApplicationController
 
-    before_action :require_user, only: [:new, :delete]
-
+    before_action :require_user, only: [:delete]
+    before_action :require_account, only: [:new]
 
     def index
       @records = Record.all

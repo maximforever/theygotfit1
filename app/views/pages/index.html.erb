@@ -20,13 +20,13 @@
                     <% if @records.count > 0 %>Your latest record is from <span class = "date"><%= @records.first.date.strftime("%B %d, %Y") %></span>.<% end %>
 
                     </p>
-                    <p>You are using TheyGotFit in <span class = "date">
+                    <p>You are using TheyGotFit in 
                     <% if current_user.imperial %>
-                        imperial
+                        <%= link_to "imperial", preferences_path(current_user), class: "date date-link" %>
                     <% else %>
-                        metric
+                        <%= link_to "metric", preferences_path(current_user), class: "date date-link" %>
                     <% end %>
-                    </span>units.</p>
+                    units.</p>
                 </div>
                 <div class = "quote">
                     <p>"<%= @quote.quote %>"</p>
@@ -41,7 +41,9 @@
                 <h3>Your records:</h3>
                     <% @records.each do |r| %>
                         <div class = "col-md-8">
-                            <p><%= link_to "Record from #{r.date.strftime("%B %d, %Y")}", record_path(r.id) %></p>
+                            <p class = "profile-text-weight">
+                                <%= link_to "#{r.date.strftime("%B %d, %Y")}", record_path(r.id)%>
+                            </p>
                         </div>
                         <div class = "col-md-4">
                             <p class = "profile-weight">

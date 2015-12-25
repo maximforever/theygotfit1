@@ -5,24 +5,22 @@
     <div class = "one-record">
         
         <div class = "record-heading">
-
-
-                    <div class = "record-detail"><%= r.date.strftime("%B %d, %Y") %> |
-                        <span class = "blue-weight">
-                                <% if !imp %>
-                                    <%=  r.to_kg %> kg
-                                <% else %>
-                                    <%=  r.weight %> lbs
-                                <% end %> 
-                        </span>|
-                        <% if params[:inches] == "true" %>
-                        <%= r.height %>
-                        in
+            <div class = "record-detail"><%= r.date.strftime("%B %d, %Y") %> |
+                <span class = "blue-weight">
+                        <% if !imp %>
+                            <%=  r.to_kg %> kg
                         <% else %>
-                        <%= r.to_cm %>
-                        cm
-                        <% end %>
-                    </div>  
+                            <%=  r.weight %> lbs
+                        <% end %> 
+                </span>|
+                <% if params[:inches] == "true" %>
+                <%= r.height %>
+                in
+                <% else %>
+                <%= r.to_cm %>
+                cm
+                <% end %>
+            </div>  
 
         </div>
 
@@ -34,11 +32,13 @@
 
         <div class = "row supporting-photos-row">
             <% r.other_photos.each do |p| %>
-                <div class = "col-md-4">
-                        <div class = "little-photo-container">
-                            <%= image_tag p, class: "little-photo" %>
+                <% unless p.nil? || p.empty? %>
+                    <div class = "col-md-4">
+                            <div class = "little-photo-container">
+                                <%= image_tag p, class: "little-photo" %>
+                            </div>
                         </div>
-                    </div>
+                    <% end %>
             <% end %>
         </div>
 

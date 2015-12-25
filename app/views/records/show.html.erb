@@ -11,10 +11,11 @@ body {
 <% imp = true if !current_user  %>
 
 <div class = "display-record-header">
+    <h3>Record for <%= link_to u.name, user_path(u) %>:</h3>
 </div>
 <div class = "main">
     <div class = "container">
-    
+        
         <div class = "row">
             <div class = "col-md-3">
             </div>

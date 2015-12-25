@@ -91,7 +91,7 @@ var main = function(){
         $(".photo-arrow").toggleClass("glyphicon-triangle-bottom");   
     });
 
-    var clicked = false
+    var clicked = false;
 
 //    this handles little picture clicks
 

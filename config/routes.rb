@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/faq' => 'pages#faq', as: :faq
 
   get '/users' => 'users#index'
-  get '/user/:id' => 'users#show', as: :user
+  get '/user/:username' => 'users#show', as: :user
   get '/users/new' => 'users#new', as: :new_user
   post '/users' => 'users#create'
   get '/user/:id/edit/' => 'users#edit', as: :preferences

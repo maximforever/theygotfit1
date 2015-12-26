@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   validates :name, presence: true
 
 
+  def to_param
+    username
+  end
+
   def has_records?
    return true if User.find_by_id(id).records.size > 0 
   end

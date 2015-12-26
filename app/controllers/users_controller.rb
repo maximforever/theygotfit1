@@ -26,8 +26,8 @@ before_action :require_user, only: [:edit, :destroy, :update, :index]
   end
 
   def show
-    @user = User.find(params[:id])
-    @records = @user.records.order(date: :desc)
+    @user = User.find_by_username(params[:username])
+    @records = @user.records.order(date: :desc) if @user 
   end
 
   def edit

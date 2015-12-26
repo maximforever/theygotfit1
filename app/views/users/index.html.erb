@@ -7,6 +7,6 @@
     <% else %>
         <%= image_tag("male.png" ,size: '10') %>
     <% end %>
-    <%= link_to u.name, user_path(u.id) %>, <%= u.age %> from <%= u.zipcode %>.
+    <%= link_to u.name, user_path(u.username) %>, <%= u.age %> from <%= u.zipcode %>.
     </p>
 <% end %>

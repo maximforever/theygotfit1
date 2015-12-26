@@ -31,12 +31,12 @@ before_action :require_user, only: [:edit, :destroy, :update, :index]
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find_by_username(params[:username])
   end
 
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find_by_username(params[:username])
     if @user.update_attributes(user_params)
       flash[:success] = "Your preferences have been updated!"
       redirect_to preferences_path
@@ -60,7 +60,7 @@ before_action :require_user, only: [:edit, :destroy, :update, :index]
   end
 
   def destroy
-    @user = User.find(params[:id])
+    @user = User.find_by_username(params[:username])
     session[:user_id] = nil if @user.id == session[:user_id]
     @user.destroy
     flash[:error] = "Your account has been deleted."

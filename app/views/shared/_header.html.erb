@@ -8,7 +8,7 @@
             <%  u = current_user %>   
             <div class = "log-div">Hello, <%= link_to u.name, profile_path %>.</div>
             <div class = "log-div"><%= link_to "Add Record", new_record_path %></div>
-            <div class = "log-div"><%= link_to "Settings", preferences_path(current_user.id) %></div>
+            <div class = "log-div"><%= link_to "Settings", preferences_path(current_user) %></div>
             <div class = "log-div"><%= link_to "FAQ", faq_path %></div>
             <div class = "log-div"><%= link_to "Log Out", logout_path %></div>
         <% else %>

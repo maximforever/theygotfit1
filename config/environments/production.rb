@@ -92,8 +92,11 @@ Rails.application.configure do
     domain: "salty-journey-3992.herokuapp.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    user_name: ENV["ZOHO_USER"],
+    password: ENV["ZOHO_PASS"]
+    :ssl                  => true,
+    :tls                  => true,
+    :enable_starttls_auto => true 
   }
 
 

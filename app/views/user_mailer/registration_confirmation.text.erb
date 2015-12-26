@@ -1,5 +1,7 @@
 Hi <%= @user.name %>,
 
-Thanks for registering! To confirm your registration click the URL below.
+Thanks for registering on <%= link to "TheyGotFit", "theygotfit.com" %>! To confirm your registration click the URL below:
 
 <%= confirm_email_user_url(@user.confirm_token) %>
+
+If you did not register on TheyGotFit.com

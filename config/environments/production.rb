@@ -93,7 +93,7 @@ Rails.application.configure do
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: ENV["ZOHO_USER"],
-    password: ENV["ZOHO_PASS"]
+    password: ENV["ZOHO_PASS"],
     :ssl                  => true,
     :tls                  => true,
     :enable_starttls_auto => true 

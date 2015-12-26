@@ -21,7 +21,11 @@ module TheyGotFit1
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.assets.enabled = false
     config.active_record.raise_in_transactional_callbacks = true
     config.serve_static_assets = true
+
+    config.assets.precompile += %w(user.css)
+    config.assets.precompile += %w(session.css)
   end
 end

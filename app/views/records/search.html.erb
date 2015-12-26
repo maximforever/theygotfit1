@@ -44,7 +44,9 @@ body {
 
             <div class = "col-md-5">
                 <p class = "little-text">HEIGHT (optional):</p>
-                <%= number_field_tag :height, params[:height], class: "height-field" %> 
+                
+
+                <%= number_field_tag :height, params[:height], class: "height-field" %>
                 <%= radio_button_tag :inches, true, checked: true %><p class = "weight-label"> in</p>
                 <%= radio_button_tag :inches, false %><p class = "weight-label"> cm</p>
             </div>

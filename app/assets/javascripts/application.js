@@ -83,11 +83,11 @@ var main = function(){
 
 
     $('.open-panel').hover( function(){
-            $(".more-panel").slideDown('slow'); 
+            $(".more-panel").slideDown('medium'); 
             $(".open-more-panel").css("color", "#187FF2");
         }, function () {
             console.log("sheet!");
-             $('.more-panel').delay(10).stop(true, true).slideUp('slow');
+             $('.more-panel').delay(10).stop(true, true).slideUp('medium');
              $(".open-more-panel").css("color", "#FFBF5D");
           }
     );

@@ -12,4 +12,10 @@ class UserMailer < ApplicationMailer
     mail(:to => "#{user.name} <#{user.email}>", :subject => "TheyGotFit Password Reset")
   end
 
+  def new_comment(user, comment)
+    @user = user
+    @comment = comment
+    mail(:to => "Max <flufci@gmail.com>", :subject => "#{user.name} just left a comment!")
+  end
+
 end

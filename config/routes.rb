@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/about' => 'pages#about'
   get '/faq' => 'pages#faq', as: :faq
   get '/comments' => 'pages#comments', as: :comments
- # post '/comments' => 'pages#comments', as: :comments  <-- need to create!
+  post '/feedbacks' => 'pages#new_comment'
 
   get '/users' => 'users#index'
   get '/user/:username' => 'users#show', as: :user

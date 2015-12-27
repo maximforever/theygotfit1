@@ -10,13 +10,13 @@ body {
 
 <div class = "main">
     <div class = "container shaded short thin about-me">
-        <p>Comments? Suggestions? Awesome. I'd love to get your ideas on how we can improve TheyGotFit.</p>
+        <p>Comments? Suggestions?  Awesome. I'd love to get your ideas on how we can improve TheyGotFit!</p>
 
 
-        <%= form_tag '/comments', :method => :post do %>
-            <%= label_tag :feedback, "COMMENTS:", class: "login-label" %>
-            <%= text_area_tag 'feedback', nil, rows: 5, class: "feedback-area" %> 
-            <%= submit_tag "Submit Comments", class: "submit-button" %>
+        <%= form_for @feedback do |f| %>
+            <%= label_tag :comment, "COMMENTS:", class: "login-label" %>
+            <%= f.text_area :comment, rows: 5, class: "feedback-area" %> 
+            <%= submit_tag "Submit Comment", class: "submit-button" %>
         <% end %>
     </div>
 </div>

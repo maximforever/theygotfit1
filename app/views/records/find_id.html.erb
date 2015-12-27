@@ -11,38 +11,20 @@ body {
 
     <div class = "main find-main">
         <div class = "container ">
-        <p><%=  %></p>
-            <h4 class = "your-search">Records: <%= params[:id1] %> and <%= params[:id2] %>. 
-                
-                <%= link_to "Search again?", search_path %>
-            </h4>
-            <h4 class = "your-search right-side">Share link: <%= link_to "#{share_link(@records[0][0].first.id, @records[0][1].first.id)}", share_link(@records[0][0].first.id, @records[0][1].first.id) %> </h4>
-            <h2  class = "centered"> Here is <%= link_to u.name, user_path(u) %>, <%= u.age %>:</h2> 
-            <div class = "row">
-                <%= render partial: "shared/record", locals: {r: @records[0][0].first} unless @records[0][0].nil?  %> 
-                <%= render partial: "shared/record", locals: {r: @records[0][1].first} unless @records[0][0].nil?  %>
+        
+        <h4 class = "your-search">Records: <%= params[:id1] %> and <%= params[:id2] %>. 
             
-
-
+            <%= link_to "Search again?", search_path %>
+        </h4>
+        <h4 class = "your-search right-side">Share link: <%= link_to "#{share_link(@records[0][0].first.id, @records[0][1].first.id)}", share_link(@records[0][0].first.id, @records[0][1].first.id) %> </h4>
+        <h2  class = "centered"> Here is <%= link_to u.name, user_path(u) %>, <%= u.age %>:</h2> 
+        <div class = "row">
+            <%= render partial: "shared/record", locals: {r: @records[0][0].first} unless @records[0][0].nil?  %> 
+            <%= render partial: "shared/record", locals: {r: @records[0][1].first} unless @records[0][0].nil?  %>
+        
         </div>
+
     </div>
-
-    
-        <div class = "navigation">
-            <div class = "left-nav">
-
-                <%= link_to go_to_previous_page(request.original_url, @pages) do %>
-                    <i class="glyphicon glyphicon-chevron-left" title="Previous Page"></i>
-                <% end %>
-            </div>
-
-            <div class = "right-nav">
-                <%= link_to go_to_next_page(request.original_url, @pages) do %>
-                    <i class="glyphicon glyphicon-chevron-right" title="Last Page"></i>
-                <% end %>
-            </div>
-        </div>
-
 <% end %>    
 
 

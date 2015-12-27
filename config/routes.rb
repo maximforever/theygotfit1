@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
   get '/search' => 'records#search', as: :search
   get '/find' => 'records#find'
+  get '/find_id' => 'records#find_id'
 
 
   resources :password_resets

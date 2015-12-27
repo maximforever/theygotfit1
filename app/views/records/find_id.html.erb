@@ -12,29 +12,12 @@ body {
     <div class = "main find-main">
         <div class = "container ">
         <p><%=  %></p>
-            <h4 class = "your-search"><%= params[:start_weight] %> to <%= params[:end_weight] %> 
-                <% if params[:pounds] == "true" %> lbs.
-                <% else %> kgs.
-                <% end %>
-                Gender: <%= params[:gender] %>. 
-                <% unless params[:height] == ""%> Height: <%= params[:height]%> 
-                    <% if params[:inches] == "true" %> in.
-                    <% else %> cm.
-                    <% end %>
-                <% end %>
-                Found <%= @pages %> 
-                <% if @pages > 1 %> 
-                    records.
-                <% else %> 
-                    record. 
-                <% end %>
+            <h4 class = "your-search">Records: <%= params[:id1] %> and <%= params[:id2] %>. 
+                
                 <%= link_to "Search again?", search_path %>
-                <br>
-
             </h4>
             <h4 class = "your-search right-side">Share link: <%= link_to "#{share_link(@records[0][0].first.id, @records[0][1].first.id)}", share_link(@records[0][0].first.id, @records[0][1].first.id) %> </h4>
             <h2  class = "centered"> Here is <%= link_to u.name, user_path(u.id) %>, <%= u.age %>:</h2> 
-            <div class = "page-nav"><%= paginate @records %></div>
             <div class = "row">
                 <%= render partial: "shared/record", locals: {r: @records[0][0].first} unless @records[0][0].nil?  %> 
                 <%= render partial: "shared/record", locals: {r: @records[0][1].first} unless @records[0][0].nil?  %>
@@ -44,7 +27,7 @@ body {
         </div>
     </div>
 
-    <% if @pages > 1 && @pages %>
+    
         <div class = "navigation">
             <div class = "left-nav">
 
@@ -59,7 +42,7 @@ body {
                 <% end %>
             </div>
         </div>
-    <% end %>  
+
 <% end %>    
 
 

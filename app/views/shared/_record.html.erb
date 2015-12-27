@@ -7,13 +7,13 @@
         <div class = "record-heading">
             <div class = "record-detail"><%= r.date.strftime("%B %d, %Y") %> |
                 <span class = "blue-weight">
-                        <% if !imp %>
-                            <%=  r.to_kg %> kg
-                        <% else %>
+                        <% if imp %>
                             <%=  r.weight %> lbs
+                        <% else %>
+                            <%=  r.to_kg %> kg
                         <% end %> 
                 </span>|
-                <% if params[:inches] == "true" %>
+                <% if imp  %>
                 <%= r.height %>
                 in
                 <% else %>

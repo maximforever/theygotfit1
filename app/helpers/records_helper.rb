@@ -1,5 +1,11 @@
 module RecordsHelper
 
+  def share_link(id1, id2)
+    hostname = request.base_url
+    link = "#{hostname}/find_id?id1=#{id1}&id2=#{id2}"
+    return link
+  end
+
 
   def go_to_next_page(url, page_num)
     if url.include?("&page=")

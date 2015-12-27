@@ -67,11 +67,8 @@ class Record < ActiveRecord::Base
     puts "starting search"
     # if there are none, find closest weight to starting.
     if start_weight.size == 0 || start_weight.nil?
-      #if we don't find anything, let's add the closest weight
+      #if we don't find anything, we're pretty much screwed
       puts "none found" 
-      start_weight = find_closest(starting)
-      weight_arr.push(start_weight) 
-      puts "Weight array is now #{weight_arr}"
 
     #if there is only one, that weight is our start_weight  
     elsif start_weight.size == 1
@@ -184,6 +181,22 @@ class Record < ActiveRecord::Base
     puts "FINAL WEIGHT ARRAY SIZE: #{@@final_set_of_records.size}"
     return @@final_set_of_records
 
+  end
+
+
+  def self.find_by_ids(id1, id2)
+
+    @@final_set_of_records.clear
+    rec1 = Record.where(id: id1)
+    rec2 = Record.where(id: id2)
+    arr = []
+    
+    unless(rec1.nil? || rec1.empty? || rec2.nil? || rec2.empty?)
+      arr.push(rec1, rec2)
+    end
+
+    @@final_set_of_records.push(arr)
+    return @@final_set_of_records
   end
 
 

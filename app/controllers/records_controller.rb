@@ -27,10 +27,6 @@ class RecordsController < ApplicationController
         @record.inches = true
       end
 
-
-      
-
-
       @record.user_id = current_user.id
       if @record.save
         redirect_to record_path(@record.id)
@@ -58,11 +54,31 @@ class RecordsController < ApplicationController
     def search
     end
 
+    def find_id
+      pull = Record.find_by_ids(params[:id1], params[:id2])
+      if(pull[0].length>0) 
+        @records = pull
+      else
+        flash[:error] = "One of the record IDs is incorrect or doesn't exist."
+        redirect_to root_path
+      end
+    end
+
     def find
 #     @records = Record.master(params[:start_weight], params[:end_weight]).page(params[:page])
+
       pull = Record.master(params[:start_weight], params[:end_weight], params[:pounds], params[:gender], params[:height], params[:inches])
-      @records = Kaminari.paginate_array(pull).page(params[:page]).per(1)
-      @pages = @records.total_pages
+      
+      if(pull.length>0) 
+        @records = Kaminari.paginate_array(pull).page(params[:page]).per(1)
+        @pages = @records.total_pages
+        @previous_page
+        @next_page
+      else
+        flash[:error] = "There are no records with this criteria. Try using different weights!"
+        redirect_to root_path
+      end
+
     end
 
     private

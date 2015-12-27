@@ -256,6 +256,9 @@ input {
     background: rgba(51, 51, 51, 1);
     border: 1px solid black;
     float: left;
+    &.right-side{
+        float: right;
+    }
 }
 
 .show-record-delete{
@@ -297,6 +300,17 @@ input {
 
 .blue-weight {
     color: #187FF2;
+}
+
+
+.no-records {
+    margin-top: 20%
+}
+
+.page-nav {
+    font-size: 20px;
+    text-align: center;
+    
 }
 
 /* Navigation Bar */

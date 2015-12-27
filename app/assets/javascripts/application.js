@@ -82,9 +82,18 @@ var main = function(){
       });
 
 
-    $('.pref-open-pane').click(function(){
-        $(".pref-pane").toggleClass("hidden");   
-    });
+    $('.open-panel').hover( function(){
+            $(".more-panel").slideDown('slow'); 
+            $(".open-more-panel").css("color", "#187FF2");
+        }, function () {
+            console.log("sheet!");
+             $('.more-panel').delay(10).stop(true, true).slideUp('slow');
+             $(".open-more-panel").css("color", "#FFBF5D");
+          }
+    );
+
+
+
 
     $('.get-more-photos').click(function(){
         $(".extra-photos").toggleClass("hidden");

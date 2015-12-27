@@ -8,11 +8,19 @@
             <%  u = current_user %>   
             <div class = "log-div">Hello, <%= link_to u.name, profile_path %>.</div>
             <div class = "log-div"><%= link_to "Add Record", new_record_path %></div>
-            <div class = "log-div"><%= link_to "Settings", preferences_path(current_user) %></div>
-            <div class = "log-div"><%= link_to "FAQ", faq_path %></div>
-            <div class = "log-div"><%= link_to "Log Out", logout_path %></div>
-        <% else %>
+            
+            <div class = "log-div open-panel"><span class = "glyphicon glyphicon-cog open-more-panel"></span>
+                <div class = "hoverzone"></div>
+                <div class = "more-panel">                
+                    <div class = "log-div"><%= link_to "Settings", preferences_path(current_user) %></div>
+                    <div class = "log-div"><%= link_to "FAQ", faq_path %></div>
+                    <div class = "log-div"><%= link_to "Comments", comments_path %></div>
+                    <div class = "log-div"><%= link_to "Log Out", logout_path %></div>
+                </div>
+            </div>
 
+
+        <% else %>
             <div class = "log-div"><%= link_to "Sign Up", new_user_path %></div>
             <div class = "log-div"><%= link_to "Log In", login_path %></div>
             <div class = "log-div"><%= link_to "Add Record", new_record_path %></div>

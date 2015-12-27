@@ -1,0 +1,22 @@
+<style type="text/css">
+body {
+  background: url(<%= randomized_background_image %>) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+}
+</style>
+
+<div class = "main">
+    <div class = "container shaded short thin about-me">
+        <p>Comments? Suggestions? Awesome. I'd love to get your ideas on how we can improve TheyGotFit.</p>
+
+
+        <%= form_tag '/comments', :method => :post do %>
+            <%= label_tag :feedback, "COMMENTS:", class: "login-label" %>
+            <%= text_area_tag 'feedback', nil, rows: 5, class: "feedback-area" %> 
+            <%= submit_tag "Submit Comments", class: "submit-button" %>
+        <% end %>
+    </div>
+</div>

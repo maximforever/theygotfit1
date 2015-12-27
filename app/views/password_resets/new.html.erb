@@ -8,18 +8,18 @@ body {
 }
 </style>
 
-
-
 <div class = "main">
   <div class = "shaded container thin tall ">
   
+    
+
     <%= form_tag password_resets_path, :method => :post do %>
     
           <%= label_tag :email, "EMAIL:", class: "login-label" %>
           <%= email_field_tag :email, params[:email] %>
           <%= submit_tag "Reset Password", class: "submit-button" %>
 
-  <% end %>
+    <% end %>
 
   </div>
 </div>

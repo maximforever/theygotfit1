@@ -23,10 +23,33 @@ body {
 
         </div>
 
-        <div class = "show-record-delete">
-            <% if r.user_id == current_user.id %>
 
-                <%= link_to "Delete Record", delete_record_path(r), method: :delete, data: { confirm: "Are you sure you want to delete this record?" }, class: "show-record-delete" %>
+        <% if @user.records.length > 1 %>
+            <div class = "navigation">
+                <% unless @previous_record.nil? %>
+                    <div class = "left-nav">
+                        <%= link_to record_path(@previous_record) do %>
+                            <i class="glyphicon glyphicon-chevron-left" title="Previous Page"></i>
+                        <% end %>
+                    </div>
+                <% end %>
+                <% unless @next_record.nil? %>
+                    <div class = "right-nav">
+                        <%= link_to record_path(@next_record) do %>
+                            <i class="glyphicon glyphicon-chevron-right" title="Next Page"></i>
+                        <% end %>
+                    </div>    
+                <% end %>
+            </div> 
+        <% end %>
+
+        
+
+        <div class = "show-record-delete">
+            <% if current_user %>
+                <% if r.user_id == current_user.id %>
+                    <%= link_to "Delete Record", delete_record_path(r), method: :delete, data: { confirm: "Are you sure you want to delete this record?" }, class: "show-record-delete" %>
+                <% end %>
             <% end %>
         </div>   
 

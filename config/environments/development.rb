@@ -33,7 +33,7 @@ Rails.application.configure do
 
   config.assets.compile = true
 
-  config.serve_static_assets = true
+  config.serve_static_files = true
 
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.

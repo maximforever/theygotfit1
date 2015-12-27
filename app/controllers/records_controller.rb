@@ -42,6 +42,9 @@ class RecordsController < ApplicationController
     def show
       @record = Record.find(params[:id])
       @user = User.find_by_id(@record.user_id)
+      @records = @user.records.order(date: :desc) if @user 
+      @next_record = Record.where('user_id = ? AND date > ?', @user.id, @record.date).first
+      @previous_record = Record.where('user_id = ? AND date < ?', @user.id, @record.date).last
     end
 
     def delete

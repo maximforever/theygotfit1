@@ -10,9 +10,8 @@ class PagesController < ApplicationController
 
   def faq
   end
-  
-  def special
-    @user = current_user
+
+  def comments
   end
 
   def about

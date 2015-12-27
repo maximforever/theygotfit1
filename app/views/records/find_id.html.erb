@@ -17,7 +17,7 @@ body {
                 <%= link_to "Search again?", search_path %>
             </h4>
             <h4 class = "your-search right-side">Share link: <%= link_to "#{share_link(@records[0][0].first.id, @records[0][1].first.id)}", share_link(@records[0][0].first.id, @records[0][1].first.id) %> </h4>
-            <h2  class = "centered"> Here is <%= link_to u.name, user_path(u.id) %>, <%= u.age %>:</h2> 
+            <h2  class = "centered"> Here is <%= link_to u.name, user_path(u) %>, <%= u.age %>:</h2> 
             <div class = "row">
                 <%= render partial: "shared/record", locals: {r: @records[0][0].first} unless @records[0][0].nil?  %> 
                 <%= render partial: "shared/record", locals: {r: @records[0][1].first} unless @records[0][0].nil?  %>

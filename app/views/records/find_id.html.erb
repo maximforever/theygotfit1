@@ -11,7 +11,7 @@ body {
 
     <div class = "main find-main">
         <div class = "container ">
-        
+        <p><%=  %></p>
         <h4 class = "your-search">Records: <%= params[:id1] %> and <%= params[:id2] %>. 
             
             <%= link_to "Search again?", search_path %>
@@ -23,7 +23,7 @@ body {
             <%= render partial: "shared/record", locals: {r: @records[0][1].first} unless @records[0][0].nil?  %>
         
         </div>
-
+            
     </div>
 <% end %>    
 

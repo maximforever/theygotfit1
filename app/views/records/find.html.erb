@@ -34,32 +34,25 @@ body {
             </h4>
             <h4 class = "your-search right-side">Share link: <%= link_to "#{share_link(@records[0][0].first.id, @records[0][1].first.id)}", share_link(@records[0][0].first.id, @records[0][1].first.id) %> </h4>
             <h2  class = "centered"> Here is <%= link_to u.name, user_path(u) %>, <%= u.age %>:</h2> 
-            <div class = "page-nav"><%= paginate @records %></div>
             <div class = "row">
                 <%= render partial: "shared/record", locals: {r: @records[0][0].first} unless @records[0][0].nil?  %> 
                 <%= render partial: "shared/record", locals: {r: @records[0][1].first} unless @records[0][0].nil?  %>
-            
-
-
         </div>
     </div>
 
-    <% if @pages > 1 && @pages %>
+
+
         <div class = "navigation">
             <div class = "left-nav">
-
-                <%= link_to go_to_previous_page(request.original_url, @pages) do %>
-                    <i class="glyphicon glyphicon-chevron-left" title="Previous Page"></i>
-                <% end %>
+                <%= link_to_previous_page @records, '<i class="glyphicon glyphicon-chevron-left"></i>'.html_safe %>
             </div>
-
+            
             <div class = "right-nav">
-                <%= link_to go_to_next_page(request.original_url, @pages) do %>
-                    <i class="glyphicon glyphicon-chevron-right" title="Last Page"></i>
-                <% end %>
+                <%= link_to_next_page @records, '<i class="glyphicon glyphicon-chevron-right"></i>'.html_safe %>
             </div>
         </div>
-    <% end %>  
+
+
 <% end %>    
 
 

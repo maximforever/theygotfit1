@@ -193,6 +193,7 @@ class Record < ActiveRecord::Base
     
     unless(rec1.nil? || rec1.empty? || rec2.nil? || rec2.empty?)
       arr.push(rec1, rec2)
+      arr.clear if id1 == id2
     end
 
     @@final_set_of_records.push(arr)

@@ -14,7 +14,7 @@ module RecordsHelper
       url.slice!(url[page_index])     # => remove the current page number
       url.slice!("&page=")           # => remove "&page="
 
-      if current_page > page_num
+      if (current_page+1) > page_num
         current_page = 1
       else
         current_page += 1

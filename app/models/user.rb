@@ -35,6 +35,25 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver
   end
 
+  def has_about
+    puts "Testing HAS_ABOUT"
+
+    if (!bio_eat.nil? || !bio_do.nil? || !bio_about.nil?) 
+      puts "something is not nil"
+      if(!bio_eat.empty? || !bio_do.empty? || !bio_about.empty?)     
+        puts "something is not empty"
+        return true 
+      else
+        puts "something is not nil, but everything is empty"
+        puts "returning false"
+        return false
+      end
+    else
+      puts "returning false"
+      return false
+    end
+  end
+
   private 
 
   def confirmation_token

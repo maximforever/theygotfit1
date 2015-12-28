@@ -11,6 +11,9 @@ class PagesController < ApplicationController
   def faq
   end
 
+  def updates
+  end
+
   def comments
     @feedback = Feedback.new
   end

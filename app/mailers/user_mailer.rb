@@ -15,7 +15,7 @@ class UserMailer < ApplicationMailer
   def new_comment(user, comment)
     @user = user
     @comment = comment
-    mail(:to => "Max <flufci@gmail.com>", :subject => "#{user.name} just left a comment!")
+    mail(:to => "Max <flufci@gmail.com>", :subject => "A user just left a comment!")
   end
 
 end

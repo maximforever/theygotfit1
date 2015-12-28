@@ -1,10 +1,9 @@
-Hey Max,
 
 <%= @comment.created_at %>
-
-<%= @user.name %> just left you the following comment:
+<% if !@user.nil? %>
+    <%= @user.name %> (<%= @user.username %>, <%= @user.email %>) 
+    <%  else %> An anonymous/delete-account user
+<% end %> just left you the following comment:
 ----
 <%= @comment.comment %>
 ----
-Keep up the good work,
-~Max

@@ -21,7 +21,23 @@
                         <% else %>
                           record  
                     <% end %>
-                </h5>    
+                </h5>
+                <div class = "about-me-section space-top">
+                    <div class = "row">
+                        <div class = "col-md-4">
+                            <h6>What I'm doing:</h6>
+                            <%= u.bio_do %>
+                        </div>
+                        <div class = "col-md-4">
+                            <h6>What I'm eating:</h6>
+                            <%= u.bio_eat %>
+                        </div>
+                        <div class = "col-md-4">
+                            <h6>About me:</h6>
+                             <%= u.bio_about %>
+                        </div>
+                    </div>
+                </div>    
             </div>
 
             <div class = "col-md-4 records-section">

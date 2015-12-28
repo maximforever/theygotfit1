@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/users/new' => 'users#new', as: :new_user
   post '/users' => 'users#create'
   get '/user/:username/edit/' => 'users#edit', as: :preferences
+  get '/user/:username/about_me/' => 'users#about_me', as: :edit_about
   patch '/user/:username' => 'users#update'
   delete '/user/:username' => 'users#destroy', as: :delete_user
 

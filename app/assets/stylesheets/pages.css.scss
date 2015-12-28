@@ -6,6 +6,10 @@
     min-height: 20%;
 }
 
+.index-header-short{
+    min-height: 10%;
+}
+
 .display-record-header{
     min-height: 8%;
     text-align: center;
@@ -111,6 +115,8 @@
     }
 }
 
+
+
 .feedback-area{
     height: 240px;
     width: 100%;
@@ -120,5 +126,18 @@
     resize: none;
     margin-top: 10px;
     margin-bottom: 20px;
+}
 
+.about-me-section{
+    padding: 10px 0px 10px 0px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    h6{
+        font-weight: bold;
+        font-size: 14px;
+    }
+    &.space-top{
+        margin-top: 80px;
+    }
+    
 }

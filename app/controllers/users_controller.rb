@@ -34,12 +34,16 @@ before_action :require_user, only: [:edit, :destroy, :update, :index]
     @user = User.find_by_username(params[:username])
   end
 
+  def about_me
+    @user = User.find_by_username(params[:username])
+  end
+
 
   def update
     @user = User.find_by_username(params[:username])
     if @user.update_attributes(user_params)
       flash[:success] = "Your preferences have been updated!"
-      redirect_to preferences_path
+      redirect_to profile_path
     else
       render 'edit'
     end
@@ -63,8 +67,8 @@ before_action :require_user, only: [:edit, :destroy, :update, :index]
     @user = User.find_by_username(params[:username])
     session[:user_id] = nil if @user.id == session[:user_id]
     @user.destroy
-    flash[:error] = "Your account has been deleted."
-    redirect_to root_path
+    flash[:error] = "Your account has been deleted. Please take a moment to tell us why!"
+    redirect_to comments_path
   end
 
   def resend
@@ -75,7 +79,8 @@ before_action :require_user, only: [:edit, :destroy, :update, :index]
   private
 
   def user_params
-      params.require(:user).permit(:name, :username, :password, :password_confirmation, :age, :zipcode, :gender, :email, :imperial)
+      params.require(:user).permit(:name, :username, :password, :password_confirmation, 
+        :age, :zipcode, :gender, :email, :imperial, :bio_do, :bio_eat, :bio_about)
   end
 
 

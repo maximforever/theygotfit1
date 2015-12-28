@@ -1,0 +1,20 @@
+<div class = "main">
+    <div class = "shaded container thin tall">
+
+        <%= form_for @user do |f| %>
+
+            <%= label_tag :bio_do, "WHAT I'M DOING:", class: "login-label" %>
+            <%= f.text_area :bio_do, rows: 3,  class: "about-me-area" %>
+            <%= label_tag :bio_eat, "WHAT I'M EATING:", class: "login-label" %>
+            <%= f.text_area :bio_eat, rows: 3, class: "about-me-area" %>
+            <%= label_tag :bio_about, "ABOUT ME:", class: "login-label" %>
+            <%= f.text_area :bio_about, rows: 3, class: "about-me-area" %>
+            
+
+            <p><%= f.submit "Update Profile", class: "submit-button" %></p>
+        
+
+        <% end %>
+
+    </div>
+</div>

@@ -2,7 +2,7 @@
 <% imp = true if !current_user  %>
 
 
-<div class = "index-header">
+<div class = "index-header-short">
 </div>
 
 <div class = "main">
@@ -28,14 +28,36 @@
                     <% end %>
                     units.</p>
                 </div>
+
                 <div class = "quote">
                     <p>"<%= @quote.quote %>"</p>
                     <h4><%= @quote.author %></h4>
                 </div>
+                
+
+                <div class = "about-me-section">
+                    <div class = "row">
+                        <div class = "col-md-4">
+                            <h6>What I'm doing:</h6>
+                            <%= current_user.bio_do %>
+                        </div>
+                        <div class = "col-md-4">
+                            <h6>What I'm eating:</h6>
+                            <%= current_user.bio_eat %>
+                        </div>
+                        <div class = "col-md-4">
+                            <h6>About me:</h6>
+                             <%= current_user.bio_about %>
+                        </div>
+                    </div>
+                </div>
+
                 <div class = "main-search-buttons">
                     <%= link_to "Find Record", search_path, class: "submit-button" %> 
                     <%= link_to "Add Record", new_record_path, class: "submit-button" %> 
                 </div>
+
+
             </div>
             <div class = "col-md-4 records-section">
                 <h3>Your records:</h3>
@@ -64,6 +86,7 @@
                     <% end %>
 
                     <div class = "blue-link"><%= link_to "See public profile", user_path(current_user ) %></div>
+                    <div class = "blue-link"><%= link_to "Edit About Me", edit_about_path(current_user) %></div>
             </div>
         </div>    
     </div>

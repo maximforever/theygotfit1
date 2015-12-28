@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151227011815) do
+ActiveRecord::Schema.define(version: 20151227234326) do
 
   create_table "feedbacks", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -58,6 +58,9 @@ ActiveRecord::Schema.define(version: 20151227011815) do
     t.string   "auth_token"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.text     "bio_do"
+    t.text     "bio_eat"
+    t.text     "bio_about"
   end
 
 end

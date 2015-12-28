@@ -1,9 +1,7 @@
 
 <%= @comment.created_at %>
 <% if !@user.nil? %>
-    <%= @user.name %> (<%= @user.username %>, <%= @user.email %>) 
-    <%  else %> An anonymous/delete-account user
-<% end %> just left you the following comment:
+    <%= @user.name %> (<%= @user.username %>, <%= @user.email %>) <%  else %> An anonymous/delete-account user<% end %> just left you the following comment:
 ----
 <%= @comment.comment %>
 ----

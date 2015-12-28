@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-before_action :require_user, only: [:edit, :destroy, :update, :index]
+before_action :require_user, only: [:edit, :destroy, :update, :index, :about_me]
 
   def index
     @users = User.all
@@ -36,6 +36,7 @@ before_action :require_user, only: [:edit, :destroy, :update, :index]
 
   def about_me
     @user = User.find_by_username(params[:username])
+    redirect_to profile_path if @user != current_user
   end
 
 

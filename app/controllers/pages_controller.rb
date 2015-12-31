@@ -11,6 +11,11 @@ class PagesController < ApplicationController
   def faq
   end
 
+  def new_user
+    redirect_to new_user_path
+    flash[:success] = "Create an account to share your awesome progress!"
+  end
+
   def updates
   end
 

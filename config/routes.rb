@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/comments' => 'pages#comments', as: :comments
   post '/feedbacks' => 'pages#new_comment'
   get '/updates' => 'pages#updates'
+  get 'sign-up' => 'pages#new_user'
 
   get '/users' => 'users#index'
   get '/user/:username' => 'users#show', as: :user

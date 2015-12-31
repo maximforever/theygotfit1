@@ -4,9 +4,10 @@
         <h2>Current user count: <span class = "num-users"><%= User.count %></span></h2>
         <h4>All the users so far: </h4>
         <table>
-            <tr>
+            <tr style "text-decoration: underline;">
                     <td>Username:</td>
                     <td>Name:</td>
+                    <td>Email</td>
                     <td>Age:  </td>
                     <td>Zip:  </td>
             </tr>
@@ -20,6 +21,9 @@
                             <%= image_tag("male.png" ,size: '10') %>
                         <% end %>
                         <%= link_to u.name, user_path(u.username) %>
+                    </td>
+                    <td>
+                        <%= u.email %>
                     </td>
                     <td>
                         <%= u.age %>

@@ -3,13 +3,9 @@ body {
   background: rgba(51, 51, 51, 0.2); 
 }
 </style>
-
-
-
-
-
 <div class = "main">
     <div class = "container shaded short thin about-me">
+        
         <p>TheyGotFit is a tool inspired by <%= link_to "/r/progresspics", "http://reddit.com/r/progresspics", target: "_blank" %>. I wrote it after being frustrated by looking through page after page for people with my weight who have made the transformation I wanted to make.</p>
         <p>TheyGotFit is also an exercise in engineering and product management. After ater completing <%= link_to "Codecademy Labs", "https://www.codecademy.com", target: "_blank" %> early in 2015, I wanted to apply the skills I was learning and build a tool I myself would use. TheyGotFit is built on Ruby on Rails with jQuery and Bootstrap.</p>
         <% if @users > 100 %>
@@ -19,5 +15,6 @@ body {
         <p>Have a suggestion or a comment, or just want to say hello? I'd love to hear from you. You can <%= link_to "leave a comment", comments_path %>, <%= mail_to "hello@theygotfit.com", "shoot me an email" %>, or tweet me <%= link_to "@maxverse", "http://twitter.com/maxverse", target: "_blank" %>.</p>
         <p>
         <p><%= link_to "Update log", "/updates" %></p>
+        
     </div>
 </div>

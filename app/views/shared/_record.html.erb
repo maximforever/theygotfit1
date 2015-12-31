@@ -27,8 +27,10 @@
         <div class = "photo-container">
             <%= image_tag r.photo, class: "record-photo" %>
         </div>
-
-        <div class = "record-caption"><%= r.caption %></div>
+        
+        <% unless r.caption.nil? || r.caption.empty? %>
+            <div class = "record-caption"><%= r.caption %></div>
+        <% end %>
 
         <div class = "row supporting-photos-row">
             <% r.other_photos.each do |p| %>

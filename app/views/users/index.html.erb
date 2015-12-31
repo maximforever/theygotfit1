@@ -10,6 +10,7 @@
                     <td>Email</td>
                     <td>Age:  </td>
                     <td>Zip:  </td>
+                    <td>Records?  </td>
             </tr>
             <% @users.each do |u| %>    
                 <tr>
@@ -30,6 +31,11 @@
                     </td>
                     <td>
                         <%= u.zipcode %>
+                    </td>
+                    <td>
+                        <% if u.records.length > 0%>
+                            <%= u.records.length %>
+                        <% end %>
                     </td>
                 </tr>
             <% end %>

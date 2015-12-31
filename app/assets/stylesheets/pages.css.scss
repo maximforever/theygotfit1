@@ -91,6 +91,11 @@
      }
      .num-users{
         color: #FFBF5D;
+        &.shorter {
+            padding-bottom: 0px;
+            margin-bottom: 0px;
+
+        }
      }
 }
 

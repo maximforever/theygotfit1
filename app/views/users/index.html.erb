@@ -3,36 +3,32 @@
         
         <h2>Current user count: <span class = "num-users"><%= User.count %></span></h2>
         <h4>All the users so far: </h4>
-
         <table>
             <tr>
-                <td>Username:</td>
-                <td>Name:</td>
-                <td>Age:  </td>
-                <td>Zip:  </td>
-                <td>
+                    <td>Username:</td>
+                    <td>Name:</td>
+                    <td>Age:  </td>
+                    <td>Zip:  </td>
             </tr>
-        <% @users.each do |u| %>    
-            <tr>
-                <td><%= u.username %></td>
-                <td>
-                    <% if u.gender %>
-                        <%= image_tag("female.png", size: '10') %>
-                    <% else %>
-                        <%= image_tag("male.png" ,size: '10') %>
-                    <% end %>
-                    <%= link_to u.name, user_path(u.username) %>
-                </td>
-                <td>
-                    <%= u.age %>
-                </td>
-                <td>
-                    <%= u.zipcode %>
-                </td>
-            </tr>
-
-            </p>
-        <% end %>
+            <% @users.each do |u| %>    
+                <tr>
+                    <td><%= u.username %></td>
+                    <td>
+                        <% if u.gender %>
+                            <%= image_tag("female.png", size: '10') %>
+                        <% else %>
+                            <%= image_tag("male.png" ,size: '10') %>
+                        <% end %>
+                        <%= link_to u.name, user_path(u.username) %>
+                    </td>
+                    <td>
+                        <%= u.age %>
+                    </td>
+                    <td>
+                        <%= u.zipcode %>
+                    </td>
+                </tr>
+            <% end %>
         </table>
     </div>
 </div>

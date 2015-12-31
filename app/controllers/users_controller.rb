@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 before_action :require_user, only: [:edit, :destroy, :update, :index, :about_me]
 
   def index
+    redirect_to profile_path unless (current_user &&  current_user.username == "max")
     @users = User.all
   end
 

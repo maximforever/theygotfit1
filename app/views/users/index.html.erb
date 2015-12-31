@@ -6,13 +6,15 @@
 
         <table>
             <tr>
-                <td> Name:</td>
+                <td>Username:</td>
+                <td>Name:</td>
                 <td>Age:  </td>
                 <td>Zip:  </td>
                 <td>
             </tr>
         <% @users.each do |u| %>    
             <tr>
+                <td><%= u.username %></td>
                 <td>
                     <% if u.gender %>
                         <%= image_tag("female.png", size: '10') %>

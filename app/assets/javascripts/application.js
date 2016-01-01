@@ -60,7 +60,8 @@ var main = function(){
 
     $('.datepicker').pickadate({
         selectYears: true,
-        selectMonths: true
+        selectMonths: true,
+        
     });
 
     $('.profile-weight').mouseenter(function(){

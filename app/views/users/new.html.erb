@@ -44,7 +44,7 @@ body {
                       <p class = "weight-label"><%= f.radio_button :gender, true%> FEMALE</p>
                   </div>
                   <div class = "col-md-6">
-                      <p class = "push-down weight-label">AGE: <span class = "push-right"><%= f.select :age, (14..99).map {|i| [i] }, {}, {class: 'form-control'} %></span></p>
+                      <p class = "push-down weight-label">AGE: <span class = "push-right"><%= f.select :age, (16..99).map {|i| [i] }, {}, {class: 'form-control'} %></span></p>
                   </div>
                 </div>
 

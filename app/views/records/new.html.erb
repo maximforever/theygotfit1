@@ -79,7 +79,7 @@ body {
             <br>
             
             <%= label_tag :name, "CAPTION (tell us about this photo):", class: "login-label" %>
-            <p><%= r.text_field :caption, size: 50, maxlength: 144 %></p>
+            <p><%= r.text_area :caption, rows: 2, maxlength: 300, class: "feedback-area rec-caption" %> </p>
 
 
             <p><%= r.submit "Save Record", class: "submit-button" %></p>

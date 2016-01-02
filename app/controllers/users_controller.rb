@@ -20,7 +20,6 @@ before_action :require_user, only: [:edit, :destroy, :update, :index, :about_me]
       UserMailer.registration_confirmation(@user).deliver
         flash[:success] = "Please confirm your email address to continue."
         redirect_to root_url
-
     else
       render new_user_path
     end

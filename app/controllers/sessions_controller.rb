@@ -16,7 +16,6 @@ class SessionsController < ApplicationController
 
       else
         flash[:error] = "Please check your email to activate your account."
-                        
         redirect_to login_path
       end
         

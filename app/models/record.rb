@@ -7,10 +7,11 @@ class Record < ActiveRecord::Base
 
 
   validates :date,
-          date: { before: Proc.new { Time.now }, message: "can't be in the future!"
+          date: { before: Proc.new { Date.today }, message: "has to be before today!"
                   }
 
   validates :photo, format: {with: /\.(png|jpg|jpeg)\Z/i, message: "has to be a jpg, jpeg, or png."}, presence: true
+  validates :caption, presence: true, presence: { message: "this photo, please"}
   validates :height, presence: true
   validates :weight, presence: true
 

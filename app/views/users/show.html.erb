@@ -8,6 +8,9 @@
     <div class = "container">
         <div class = "row">
             <div class = "col-md-8">
+                <% if u.id <= 50 %>
+                    <p class = "og-badge">OG</p>
+                <% end %>
                 <h2 class = "profile-heading"><%= u.username %> <span class = "heading-light">is <%= u.age %> years old</span></h2>
                 <h5 class = "profile-subheading">
                     <% if u.gender %>

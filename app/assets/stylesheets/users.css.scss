@@ -6,6 +6,7 @@
     font-family: 'Hind Vadodara', sans-serif;
     font-size: 40px;
     font-weight: 700;
+    margin-top: 10px;
 }
 
 .heading-light {
@@ -66,3 +67,12 @@
     }
 }
 
+/* OG Badge */
+.og-badge {
+    text-align: center;
+    width: 6%;
+    border: 1px solid black;
+    border-radius: 3px;
+    background: #FFF72F;
+    margin-bottom: 0px;
+}

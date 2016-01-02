@@ -21,7 +21,7 @@
                 <p class = "weight-label"><%= f.radio_button :imperial, false, checked: !@user.imperial %> METRIC (KG/CM)</p> 
               </div>
 
-              <%= label_tag :name, "NAME:", class: "login-label" %>
+              <%= label_tag :name, "FIRST NAME:", class: "login-label" %>
               <%= f.text_field :name %>
               <%= label_tag :zipcode, "ZIPCODE:", class: "login-label" %>
               <p><%= f.number_field :zipcode, max: 999999, size: 6%></p>
@@ -34,7 +34,7 @@
                       <p class = "weight-label"><%= f.radio_button :gender, true, checked: @user.gender %> FEMALE</p>
                   </div>
                   <div class = "col-md-6 right-aligned-age">
-                      <p class = "weight-label">AGE: <span class = "push-right"><%= f.select :age, (14..99).map {|i| [i] }, {}, {class: 'form-control'} %></span></p>
+                      <p class = "weight-label">AGE: <span class = "push-right"><%= f.select :age, (16..99).map {|i| [i] }, {}, {class: 'form-control'} %></span></p>
                   </div>
                 </div>
               </div>

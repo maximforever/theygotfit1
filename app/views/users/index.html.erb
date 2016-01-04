@@ -1,7 +1,15 @@
 <div class = "main">
     <div class = "container shaded short fat about-me index-table">
         
-        <h2>Current user count: <span class = "num-users"><%= User.count %></span></h2>
+        
+        <div class = "row">
+            <div class = "col-md-6">
+                <h2>Users: <span class = "num-users"><%= User.count %></span></h2>
+            </div>
+            <div class = "col-md-6">
+                <h2>Records: <span class = "num-users"><%= Record.count %></span></h2>
+            </div>
+        </div>
         <h4>All the users so far: </h4>
         <table>
             <tr style "text-decoration: underline;">

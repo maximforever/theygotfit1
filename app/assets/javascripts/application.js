@@ -146,6 +146,30 @@ var main = function(){
     });
 
 
+    /* About Me Tabs */
+
+    $(".me-doing").click(function(){
+        $(".about-me-tabs div").removeClass("active-about-me");
+        $(".about-me-content div").addClass("hidden");
+        $(this).addClass("active-about-me");
+        $(".me-doing-text").removeClass("hidden");
+    });
+
+    $(".me-eating").click(function(){
+        $(".about-me-tabs div").removeClass("active-about-me");
+        $(".about-me-content div").addClass("hidden");
+        $(this).addClass("active-about-me");
+        $(".me-eating-text").removeClass("hidden");
+    });
+
+    $(".me-about-me").click(function(){
+        $(".about-me-tabs div").removeClass("active-about-me");
+        $(".about-me-content div").addClass("hidden");
+        $(this).addClass("active-about-me");
+        $(".me-about-me-text").removeClass("hidden");
+    });
+
+
 
 };
 

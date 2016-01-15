@@ -55,11 +55,11 @@ before_action :require_user, only: [:edit, :destroy, :update, :index, :about_me]
       user = User.find_by_confirm_token(params[:id])
       if user
         user.email_activate
-        flash[:success] = "Welcome to TheyGotFit! Your email has been confirmed.
-        Please sign in to continue."
-        redirect_to login_path
+        flash[:success] = "Welcome to TheyGotFit! Your email has been confirmed. Please take a moment to complete your profile."
+        cookies.permanent[:auth_token] = user.auth_token
+        redirect_to edit_about_path(current_user)
       else
-        flash[:error] = "Sorry. This user does not exist."
+        flash[:error] = "Sorry, this link is not valid."
         redirect_to root_path
       end
   end

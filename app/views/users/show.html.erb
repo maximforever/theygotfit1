@@ -27,21 +27,18 @@
                 </h5>
                 <% if u.has_about == true %>
                     <div class = "about-me-section space-top">
-                        <div class = "row">
-                            <div class = "col-md-4">
-                                <h6>What I'm doing:</h6>
-                                <%= u.bio_do %>
-                            </div>
-                            <div class = "col-md-4">
-                                <h6>What I'm eating:</h6>
-                                <%= u.bio_eat %>
-                            </div>
-                            <div class = "col-md-4">
-                                <h6>About me:</h6>
-                                 <%= u.bio_about %>
-                            </div>
+                        <div class = "about-me-tabs">
+                            <div class = "col-md-4 me-doing active-about-me">What's I'm doing</div>
+                            <div class = "col-md-4 me-eating">What I'm Eating</div>
+                            <div class = "col-md-4 me-about-me">About Me</div>
                         </div>
-                    </div>  
+
+                        <div class = "about-me-content">
+                            <div class = "me-doing-text"> <%= simple_format(u.bio_do) %></div>
+                            <div class = "me-eating-text hidden"> <%= simple_format(u.bio_eat) %></div>
+                            <div class = "me-about-me-text hidden"> <%= simple_format(u.bio_about) %></div>
+                        </div>
+                    </div>
                 <% end %>  
             </div>
             

@@ -141,6 +141,8 @@
     padding: 10px 0px 10px 0px;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+
+
     h6{
         font-weight: bold;
         font-size: 14px;
@@ -148,5 +150,42 @@
     &.space-top{
         margin-top: 80px;
     }
+    row{
+        margin-right: auto;
+        margin-left: auto;
+    }
     
+}
+
+/* About Me */
+
+.about-me-tabs {
+    text-align: center;
+    min-height: 50px;
+    div {
+        font-size: 16px;
+        padding: 10px;
+        display: inline;
+        text-align: center;
+        background: rgba(51, 51, 51, 0.8);
+        color: #FFBF5D;
+        border: 1px solid rgba(51, 51, 51, 0.4);
+        &:hover{
+            background: rgba(51, 51, 51, 0.9);
+            color: #187FF2;
+            cursor: pointer;
+        }
+        &.active-about-me{
+            background: rgba(51, 51, 51, 0.7);
+            border: 1px solid rgba(51, 51, 51, 0.4);
+            &:hover{
+                background: rgba(51, 51, 51, 0.9);
+            color: #187FF2;
+            }
+        }
+    }
+}
+
+.about-me-content{
+    margin: 10px 0px 10px 0px;
 }

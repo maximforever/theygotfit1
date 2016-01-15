@@ -39,19 +39,16 @@
                 
 
                 <div class = "about-me-section">
-                    <div class = "row">
-                        <div class = "col-md-4">
-                            <h6>What I'm doing:</h6>
-                            <%= current_user.bio_do %>
-                        </div>
-                        <div class = "col-md-4">
-                            <h6>What I'm eating:</h6>
-                            <%= current_user.bio_eat %>
-                        </div>
-                        <div class = "col-md-4">
-                            <h6>About me:</h6>
-                             <%= current_user.bio_about %>
-                        </div>
+                    <div class = "about-me-tabs">
+                        <div class = "col-md-4 me-doing active-about-me">What's I'm doing</div>
+                        <div class = "col-md-4 me-eating">What I'm Eating</div>
+                        <div class = "col-md-4 me-about-me">About Me</div>
+                    </div>
+
+                    <div class = "about-me-content">
+                        <div class = "me-doing-text"> <%= simple_format(current_user.bio_do) %></div>
+                        <div class = "me-eating-text hidden"> <%= simple_format(current_user.bio_eat) %></div>
+                        <div class = "me-about-me-text hidden"> <%= simple_format(current_user.bio_about) %></div>
                     </div>
                 </div>
 

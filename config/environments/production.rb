@@ -29,16 +29,11 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
+  config.assets.compile = false
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
-
-
-  config.serve_static_files = true
-  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
-  config.assets.compile = true
-
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
@@ -67,7 +62,7 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-   config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.raise_delivery_errors = false
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -81,27 +76,4 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  config.action_mailer.default_url_options = { :host => 'www.theygotfit.com' }  
-  config.action_mailer.delivery_method = :smtp  
-  config.action_mailer.perform_deliveries = true  
-  config.action_mailer.raise_delivery_errors = false  
-  config.action_mailer.default :charset => "utf-8"  
-  config.action_mailer.smtp_settings = {  
-    address: "smtp.zoho.com",
-    port: 465,
-    domain: "www.theygotfit.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV["ZOHO_USER"],
-    password: ENV["ZOHO_PASS"],
-    :ssl                  => true,
-    :tls                  => true,
-    :enable_starttls_auto => true 
-  }
-
-
-
-
-  
 end

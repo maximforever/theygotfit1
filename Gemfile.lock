@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/amatsuda/kaminari.git
+  remote: https://github.com/amatsuda/kaminari.git
   revision: ff5c8425eb7191a4e1cb6013b2a15bf38a725a5f
   specs:
     kaminari (1.1.1)
@@ -89,19 +89,21 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (1.8.6)
-    loofah (2.4.0)
+    loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     mini_mime (1.0.2)
-    mini_portile2 (2.4.0)
+    mini_portile2 (2.8.0)
     minitest (5.14.0)
-    nokogiri (1.10.8)
-      mini_portile2 (~> 2.4.0)
+    nokogiri (1.13.10)
+      mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
     pg (0.18.1)
     pickadate-rails (3.5.6.0)
       railties (>= 3.1.0)
+    racc (1.6.1)
     rack (1.6.13)
     rack-test (0.6.3)
       rack (>= 1.0)
